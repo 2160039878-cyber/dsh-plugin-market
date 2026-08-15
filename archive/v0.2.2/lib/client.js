@@ -590,30 +590,17 @@ window.__ModuleLoader__.load({
 
     async function filterInstallableRepos(repos, isCurrent, onProgress) {
       const matches = [];
-      const checked = [];
       for (let index = 0; index < repos.length; index += 1) {
         if (!isCurrent()) return null;
-        let result;
         try {
-          result = await checkRepo(repos[index]);
-        } catch (error) {
-          result = {
-            status: "warn",
-            title: "体检失败",
-            note: explainFetchError(error),
-            findings: [{ label: "GitHub 请求失败", tone: "warn" }]
-          };
+          const result = await checkRepo(repos[index]);
+          if (result.status === "good") matches.push(repos[index]);
+        } catch {
+          // Keep the market strict: failed checks are hidden by default.
         }
-        const repo = {
-          ...repos[index],
-          dpmHealth: result,
-          dpmCandidateOnly: result.status !== "good"
-        };
-        checked.push(repo);
-        if (result.status === "good") matches.push(repo);
         if (onProgress) onProgress(index + 1, repos.length, matches.length);
       }
-      return { matches, checked };
+      return matches;
     }
 
     function explainFetchError(error) {
@@ -761,12 +748,6 @@ window.__ModuleLoader__.load({
         copy.type = "button";
         copy.className = "dpm-action";
         copy.innerHTML = `${icons.copy}<span>复制安装命令</span>`;
-        let currentCheck = repo.dpmHealth || null;
-        function updateCopyState() {
-          const canInstall = currentCheck?.status === "good";
-          copy.disabled = !canInstall;
-          copy.title = canInstall ? "" : "先体检通过后再复制安装命令";
-        }
         copy.addEventListener("click", async () => {
           try {
             await copyText(command);
@@ -794,7 +775,6 @@ window.__ModuleLoader__.load({
         checkResult.append(checkTitle, findings, note);
 
         function renderCheck(result) {
-          currentCheck = result;
           checkResult.dataset.show = "true";
           checkTitle.textContent = result.title;
           findings.replaceChildren();
@@ -806,7 +786,6 @@ window.__ModuleLoader__.load({
             findings.appendChild(pill);
           }
           note.textContent = result.note;
-          updateCopyState();
         }
 
         check.addEventListener("click", async () => {
@@ -829,8 +808,6 @@ window.__ModuleLoader__.load({
 
         head.append(repoBox);
         item.append(head, meta, actions, checkResult);
-        updateCopyState();
-        if (repo.dpmHealth) renderCheck(repo.dpmHealth);
         return item;
       }
 
@@ -865,7 +842,7 @@ window.__ModuleLoader__.load({
         try {
           const directRepo = fetchDirectRepo(query);
           if (directRepo) {
-            directRepo.dpmStatus = "直接仓库查询：已跳过 GitHub Search API。请点“体检插件”，通过后才能复制安装命令。";
+            directRepo.dpmStatus = "直接仓库查询：已跳过 GitHub Search API。请点“体检插件”确认是否可安装。";
             if (seq === searchSeq) render(directRepo);
             return;
           }
@@ -890,18 +867,14 @@ window.__ModuleLoader__.load({
             if (seq === searchSeq) setStatus(`正在体检 ${done}/${total}，已通过 ${passed} 个 DSH 插件。`);
           });
           if (!filtered || seq !== searchSeq) return;
-          if (filtered.matches.length === 0) {
-            render({
-              total_count: data.total_count,
-              items: filtered.checked,
-              dpmStatus: `GitHub 返回 ${formatCount(data.total_count)} 个候选，但前 ${data.items.length} 个没有体检通过的 DSH 插件。下面是原始候选，已禁用安装命令复制。`
-            });
+          if (filtered.length === 0) {
+            setStatus(`GitHub 返回 ${formatCount(data.total_count)} 个候选，但前 ${data.items.length} 个没有体检通过的 DSH 插件。可以关闭“只显示插件”查看原始结果。`);
             return;
           }
           render({
             total_count: data.total_count,
-            items: filtered.matches,
-            dpmStatus: `GitHub 返回 ${formatCount(data.total_count)} 个候选，前 ${data.items.length} 个里体检通过 ${filtered.matches.length} 个 DSH 插件。`
+            items: filtered,
+            dpmStatus: `GitHub 返回 ${formatCount(data.total_count)} 个候选，前 ${data.items.length} 个里体检通过 ${filtered.length} 个 DSH 插件。`
           });
         } catch (error) {
           if (seq === searchSeq) setStatus(`搜索失败：${explainFetchError(error)}`);

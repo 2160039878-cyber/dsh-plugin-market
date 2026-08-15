@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-market",
-  "version": "0.2.3",
+  "version": "0.2.2",
   "description": "A loud GitHub plugin radar for DeepSeek Harness.",
   "type": "module",
   "main": "lib/index.js",

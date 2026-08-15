@@ -1,11 +1,5 @@
 # Changelog
 
-## v0.2.3
-
-- Keep search usable when strict filtering finds no verified plugins.
-- Show checked raw candidates with their health result instead of an empty message.
-- Disable install command copying until a repository passes the DSH plugin health check.
-
 ## v0.2.2
 
 - Stop auto-searching GitHub when the panel opens.
