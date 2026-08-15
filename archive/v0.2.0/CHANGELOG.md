@@ -1,12 +1,5 @@
 # Changelog
 
-## v0.2.1
-
-- Enable strict search by default.
-- Hide normal search results unless they pass the DSH bundle health check.
-- Add a "只显示插件" switch for falling back to raw GitHub results.
-- Add raw file request timeouts while checking repositories.
-
 ## v0.2.0
 
 - Add direct `owner/repo` and GitHub repository URL lookup without using the GitHub Search API.

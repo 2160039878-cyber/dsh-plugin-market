@@ -127,33 +127,10 @@ window.__ModuleLoader__.load({
 
 .dpm-search {
   display: grid;
-  grid-template-columns: 1fr auto auto auto;
+  grid-template-columns: 1fr auto auto;
   gap: 10px;
   padding: 14px 18px;
   border-bottom: 1px solid var(--dsw-alias-border-l2, rgba(255,255,255,.12));
-}
-
-.dpm-filter {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  height: 36px;
-  border: 1px solid var(--dsw-alias-border-l2, rgba(255,255,255,.16));
-  border-radius: 8px;
-  padding: 0 10px;
-  background: var(--dsw-alias-bg-layer-3, #26282e);
-  color: var(--dsw-alias-label-secondary, #d7d9e0);
-  font-size: 12px;
-  line-height: 1;
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.dpm-filter input {
-  width: 14px;
-  height: 14px;
-  margin: 0;
-  accent-color: var(--dsw-alias-brand-primary, #4f7cff);
 }
 
 .dpm-input,
@@ -488,17 +465,9 @@ window.__ModuleLoader__.load({
       const branches = [text(repo.default_branch, "main"), "master"];
       let last = { ok: false, status: 0, text: "" };
       for (const branch of [...new Set(branches)]) {
-        const controller = new AbortController();
-        const timer = window.setTimeout(() => controller.abort(), 6000);
-        try {
-          const response = await fetch(rawUrl(repo, branch, path), { cache: "no-store", signal: controller.signal });
-          if (response.ok) return { ok: true, status: response.status, text: await response.text(), branch };
-          last = { ok: false, status: response.status, text: "" };
-        } catch {
-          last = { ok: false, status: 0, text: "" };
-        } finally {
-          window.clearTimeout(timer);
-        }
+        const response = await fetch(rawUrl(repo, branch, path), { cache: "no-store" });
+        if (response.ok) return { ok: true, status: response.status, text: await response.text(), branch };
+        last = { ok: false, status: response.status, text: "" };
       }
       return last;
     }
@@ -587,21 +556,6 @@ window.__ModuleLoader__.load({
       return task;
     }
 
-    async function filterInstallableRepos(repos, isCurrent, onProgress) {
-      const matches = [];
-      for (let index = 0; index < repos.length; index += 1) {
-        if (!isCurrent()) return null;
-        try {
-          const result = await checkRepo(repos[index]);
-          if (result.status === "good") matches.push(repos[index]);
-        } catch {
-          // Keep the market strict: failed checks are hidden by default.
-        }
-        if (onProgress) onProgress(index + 1, repos.length, matches.length);
-      }
-      return matches;
-    }
-
     async function copyText(value) {
       if (navigator.clipboard?.writeText) {
         await navigator.clipboard.writeText(value);
@@ -643,10 +597,6 @@ window.__ModuleLoader__.load({
               <option value="updated">按更新</option>
               <option value="forks">按 fork</option>
             </select>
-            <label class="dpm-filter" title="开启后只显示体检通过的 DSH bundle">
-              <input type="checkbox" name="strict" checked />
-              <span>只显示插件</span>
-            </label>
             <button class="dpm-button" type="submit">搜索</button>
           </form>
           <div class="dpm-results" data-dpm-results>
@@ -816,7 +766,7 @@ window.__ModuleLoader__.load({
         }
         const status = document.createElement("div");
         status.className = "dpm-status";
-        status.textContent = text(data.dpmStatus, `GitHub 返回 ${formatCount(total)} 个匹配仓库，当前显示前 ${data.items.length} 个。`);
+        status.textContent = `GitHub 返回 ${formatCount(total)} 个匹配仓库，当前显示前 ${data.items.length} 个。`;
         const list = document.createElement("ul");
         list.className = "dpm-list";
         for (const repo of data.items) list.appendChild(buildCard(repo));
@@ -828,13 +778,11 @@ window.__ModuleLoader__.load({
         const values = new FormData(form);
         const query = String(values.get("query") || DEFAULT_QUERY).trim() || DEFAULT_QUERY;
         const sort = String(values.get("sort") || "stars");
-        const strict = values.get("strict") === "on";
         searchButton.disabled = true;
         setStatus("正在搜索 GitHub...");
         try {
           const directRepo = fetchDirectRepo(query);
           if (directRepo) {
-            directRepo.dpmStatus = "直接仓库查询：已跳过 GitHub Search API。请点“体检插件”确认是否可安装。";
             if (seq === searchSeq) render(directRepo);
             return;
           }
@@ -849,25 +797,7 @@ window.__ModuleLoader__.load({
             const message = text(data?.message, `GitHub API ${response.status}`);
             throw new Error(message);
           }
-          if (!strict) {
-            if (seq === searchSeq) render(data);
-            return;
-          }
-
-          if (seq === searchSeq) setStatus(`GitHub 返回 ${formatCount(data.total_count)} 个候选，正在体检前 ${data.items.length} 个...`);
-          const filtered = await filterInstallableRepos(data.items || [], () => seq === searchSeq, (done, total, passed) => {
-            if (seq === searchSeq) setStatus(`正在体检 ${done}/${total}，已通过 ${passed} 个 DSH 插件。`);
-          });
-          if (!filtered || seq !== searchSeq) return;
-          if (filtered.length === 0) {
-            setStatus(`GitHub 返回 ${formatCount(data.total_count)} 个候选，但前 ${data.items.length} 个没有体检通过的 DSH 插件。可以关闭“只显示插件”查看原始结果。`);
-            return;
-          }
-          render({
-            total_count: data.total_count,
-            items: filtered,
-            dpmStatus: `GitHub 返回 ${formatCount(data.total_count)} 个候选，前 ${data.items.length} 个里体检通过 ${filtered.length} 个 DSH 插件。`
-          });
+          if (seq === searchSeq) render(data);
         } catch (error) {
           if (seq === searchSeq) setStatus(`搜索失败：${error instanceof Error ? error.message : String(error)}`);
         } finally {
