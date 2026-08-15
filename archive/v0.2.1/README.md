@@ -26,7 +26,6 @@ This plugin gives you a radar inside DSH:
 ## Features
 
 - Default search: `topic:dsh-plugins -user:deepseek-ai`.
-- The panel does not auto-search on open; this avoids immediate failures when `api.github.com` is blocked or rate-limited.
 - Strict mode is enabled by default: normal search results are hidden unless the repository passes the DSH bundle health check.
 - Direct repository lookup without the GitHub Search API: `2160039878-cyber/dsh-plugin-market` or `https://github.com/2160039878-cyber/dsh-plugin-market`.
 - Sort by stars, update time, or forks.
@@ -91,8 +90,6 @@ Planned only if needed:
 
 Historical source snapshots are kept in [`archive/`](archive/) in addition to Git tags and GitHub releases.
 
-- [`archive/v0.2.1`](archive/v0.2.1): strict DSH plugin filtering by default.
-- [`archive/v0.2.1.zip`](archive/v0.2.1.zip): the same snapshot as a zip package.
 - [`archive/v0.2.0`](archive/v0.2.0): direct repository lookup and plugin health checks.
 - [`archive/v0.2.0.zip`](archive/v0.2.0.zip): the same snapshot as a zip package.
 - [`archive/v0.1.0`](archive/v0.1.0): first public MVP, search + copy install command.

@@ -8,8 +8,7 @@ window.__ModuleLoader__.load({
     const PLUGIN_ID = "dsh-plugin-market";
     const ROOT_ID = "dsh-plugin-market-root";
     const STYLE_ID = "dsh-plugin-market-style";
-    const DEFAULT_QUERY = "";
-    const QUERY_PLACEHOLDER = "owner/repo 或 topic:dsh-plugins -user:deepseek-ai";
+    const DEFAULT_QUERY = "topic:dsh-plugins -user:deepseek-ai";
     const healthCache = new Map();
 
     const css = `
@@ -603,14 +602,6 @@ window.__ModuleLoader__.load({
       return matches;
     }
 
-    function explainFetchError(error) {
-      const message = error instanceof Error ? error.message : String(error);
-      if (/Failed to fetch|NetworkError|Load failed/i.test(message)) {
-        return "无法访问 GitHub Search API。请直接输入 owner/repo 检查，或确认网络/代理允许访问 api.github.com。";
-      }
-      return message;
-    }
-
     async function copyText(value) {
       if (navigator.clipboard?.writeText) {
         await navigator.clipboard.writeText(value);
@@ -646,7 +637,7 @@ window.__ModuleLoader__.load({
             <button class="dpm-icon-button" type="button" data-dpm-close title="关闭">${icons.close}</button>
           </div>
           <form class="dpm-search">
-            <input class="dpm-input" name="query" value="${DEFAULT_QUERY}" placeholder="${QUERY_PLACEHOLDER}" aria-label="GitHub 搜索词" spellcheck="false" />
+            <input class="dpm-input" name="query" value="${DEFAULT_QUERY}" aria-label="GitHub 搜索词" spellcheck="false" />
             <select class="dpm-select" name="sort" aria-label="排序">
               <option value="stars">按 star</option>
               <option value="updated">按更新</option>
@@ -659,7 +650,7 @@ window.__ModuleLoader__.load({
             <button class="dpm-button" type="submit">搜索</button>
           </form>
           <div class="dpm-results" data-dpm-results>
-            <div class="dpm-status">默认不会自动联网。建议先输入 <code>owner/repo</code> 直接检查；关键词搜索需要能访问 GitHub Search API。</div>
+            <div class="dpm-status">打开后会搜索 <code>${DEFAULT_QUERY}</code>。</div>
           </div>
           <div class="dpm-footer">
             <span>命令只是候选；仓库必须声明 <code>dsh.bundle</code> 才能作为插件挂载。</span>
@@ -675,6 +666,7 @@ window.__ModuleLoader__.load({
       const results = root.querySelector("[data-dpm-results]");
       const toast = root.querySelector("[data-dpm-toast]");
       const searchButton = root.querySelector(".dpm-button");
+      let hasLoaded = false;
       let searchSeq = 0;
       let toastTimer = 0;
 
@@ -690,6 +682,10 @@ window.__ModuleLoader__.load({
       function setOpen(open) {
         root.classList.toggle("dpm-open", open);
         launcher.setAttribute("aria-expanded", String(open));
+        if (open && !hasLoaded) {
+          hasLoaded = true;
+          void search();
+        }
       }
 
       function setStatus(message) {
@@ -830,13 +826,9 @@ window.__ModuleLoader__.load({
       async function search() {
         const seq = ++searchSeq;
         const values = new FormData(form);
-        const query = String(values.get("query") || "").trim();
+        const query = String(values.get("query") || DEFAULT_QUERY).trim() || DEFAULT_QUERY;
         const sort = String(values.get("sort") || "stars");
         const strict = values.get("strict") === "on";
-        if (!query) {
-          setStatus("先输入 owner/repo 直接检查，或输入关键词再走 GitHub 搜索。");
-          return;
-        }
         searchButton.disabled = true;
         setStatus("正在搜索 GitHub...");
         try {
@@ -877,7 +869,7 @@ window.__ModuleLoader__.load({
             dpmStatus: `GitHub 返回 ${formatCount(data.total_count)} 个候选，前 ${data.items.length} 个里体检通过 ${filtered.length} 个 DSH 插件。`
           });
         } catch (error) {
-          if (seq === searchSeq) setStatus(`搜索失败：${explainFetchError(error)}`);
+          if (seq === searchSeq) setStatus(`搜索失败：${error instanceof Error ? error.message : String(error)}`);
         } finally {
           if (seq === searchSeq) searchButton.disabled = false;
         }
@@ -892,6 +884,7 @@ window.__ModuleLoader__.load({
       root.querySelector("[data-dpm-refresh]").addEventListener("click", () => search());
       form.addEventListener("submit", (event) => {
         event.preventDefault();
+        hasLoaded = true;
         void search();
       });
       document.addEventListener("keydown", onKeydown);

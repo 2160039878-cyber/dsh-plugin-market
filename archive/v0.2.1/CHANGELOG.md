@@ -1,11 +1,5 @@
 # Changelog
 
-## v0.2.2
-
-- Stop auto-searching GitHub when the panel opens.
-- Show an explicit empty-query state instead of making a network request.
-- Explain `Failed to fetch` as a GitHub Search API/network access problem and point users to direct `owner/repo` lookup.
-
 ## v0.2.1
 
 - Enable strict search by default.
