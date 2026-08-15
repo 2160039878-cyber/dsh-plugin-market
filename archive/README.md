@@ -2,6 +2,8 @@
 
 Historical source snapshots live here so the repository keeps readable old versions, not only Git tags.
 
+- `v0.2.3/`: checked candidates fallback when no plugins pass.
+- `v0.2.3.zip`: same source snapshot as a portable zip.
 - `v0.2.2/`: no automatic GitHub search on panel open.
 - `v0.2.2.zip`: same source snapshot as a portable zip.
 - `v0.2.1/`: strict DSH plugin filtering by default.

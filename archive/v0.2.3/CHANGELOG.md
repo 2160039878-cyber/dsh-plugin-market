@@ -1,15 +1,5 @@
 # Changelog
 
-## v0.3.0
-
-- Rework the product around a verified built-in plugin directory.
-- Add `registry/plugins.json` with 12 conservative verified DSH plugin entries.
-- Add Chinese directory search and query expansion for common plugin terms.
-- Add verified skin/theme entries so Chinese searches like `皮肤` work locally.
-- Split local directory search from explicit GitHub lead discovery.
-- Keep install command copying disabled until a repository passes health checks.
-- Add registry validation to `npm run check`.
-
 ## v0.2.3
 
 - Keep search usable when strict filtering finds no verified plugins.

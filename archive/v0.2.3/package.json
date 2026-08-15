@@ -1,7 +1,7 @@
 {
   "name": "dsh-plugin-market",
-  "version": "0.3.0",
-  "description": "A verified-first plugin store and GitHub discovery helper for DeepSeek Harness.",
+  "version": "0.2.3",
+  "description": "A loud GitHub plugin radar for DeepSeek Harness.",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
@@ -22,7 +22,7 @@
     }
   },
   "scripts": {
-    "check": "node --check lib/client.js && node --check lib/index.js && node scripts/validate-registry.js"
+    "check": "node --check lib/client.js && node --check lib/index.js"
   },
   "keywords": [
     "deepseek",

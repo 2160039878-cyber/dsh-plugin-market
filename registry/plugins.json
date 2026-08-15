@@ -1,0 +1,373 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-08-16",
+  "plugins": [
+    {
+      "fullName": "dsh-market/dsh-market",
+      "name": "dshmarket",
+      "title": "DSH Market",
+      "titleZh": "DSH 可视化插件市场",
+      "summary": "Visual marketplace inside DeepSeek Harness for browsing, searching, and installing community plugins.",
+      "summaryZh": "DeepSeek Harness 内的可视化插件市场，用来浏览、搜索和安装社区插件。",
+      "category": "market",
+      "tags": [
+        "market",
+        "visual",
+        "install",
+        "web-ui"
+      ],
+      "keywordsZh": [
+        "可视化",
+        "插件市场",
+        "安装",
+        "社区插件"
+      ],
+      "language": "TypeScript",
+      "stars": 266,
+      "lastChecked": "2026-08-16",
+      "verified": {
+        "packageName": "dshmarket",
+        "bundlePatch": "./cordis.patch.yml",
+        "client": true
+      }
+    },
+    {
+      "fullName": "bradeGithub/DSH-Plugins-Marketplace",
+      "name": "dsh-plugin-marketplace",
+      "title": "DSH Plugins Marketplace",
+      "titleZh": "DSH 插件市场",
+      "summary": "Browse and install plugins from the GitHub dsh-plugin topic.",
+      "summaryZh": "在 DSH Web 里浏览 GitHub dsh-plugin 主题下的插件候选。",
+      "category": "market",
+      "tags": [
+        "market",
+        "github-search",
+        "install",
+        "web-ui"
+      ],
+      "keywordsZh": [
+        "插件市场",
+        "安装",
+        "搜索",
+        "可视化"
+      ],
+      "language": "JavaScript",
+      "stars": 68,
+      "lastChecked": "2026-08-16",
+      "verified": {
+        "packageName": "dsh-plugin-marketplace",
+        "bundlePatch": "./cordis.patch.yml",
+        "client": true
+      }
+    },
+    {
+      "fullName": "2160039878-cyber/dsh-plugin-market",
+      "name": "dsh-plugin-market",
+      "title": "DSH Plugin Market",
+      "titleZh": "DSH 插件市场",
+      "summary": "A verified-first plugin directory and GitHub discovery helper for DeepSeek Harness Web.",
+      "summaryZh": "目录优先的 DSH 插件商店，可浏览已验证插件，也可发现 GitHub 线索。",
+      "category": "market",
+      "tags": [
+        "market",
+        "directory",
+        "github-search",
+        "web-ui"
+      ],
+      "keywordsZh": [
+        "插件市场",
+        "目录",
+        "搜索",
+        "商店",
+        "中文"
+      ],
+      "language": "JavaScript",
+      "stars": 0,
+      "lastChecked": "2026-08-16",
+      "verified": {
+        "packageName": "dsh-plugin-market",
+        "bundlePatch": "./cordis.patch.yml",
+        "client": true
+      }
+    },
+    {
+      "fullName": "KYZHXL/dsh-manager",
+      "name": "@snowsalt/dsh-manager",
+      "title": "DSH Manager",
+      "titleZh": "DSH 插件管理器",
+      "summary": "ComfyUI-Manager-style plugin marketplace for browsing, installing, updating, and removing DSH plugins.",
+      "summaryZh": "类似 ComfyUI-Manager 的 DSH 插件管理器，面向浏览、安装、更新和移除。",
+      "category": "manager",
+      "tags": [
+        "manager",
+        "market",
+        "install",
+        "update",
+        "remove"
+      ],
+      "keywordsZh": [
+        "管理器",
+        "安装",
+        "更新",
+        "卸载",
+        "插件市场"
+      ],
+      "language": "TypeScript",
+      "stars": 4,
+      "lastChecked": "2026-08-16",
+      "verified": {
+        "packageName": "@snowsalt/dsh-manager",
+        "bundlePatch": "./cordis.patch.yml",
+        "client": false
+      }
+    },
+    {
+      "fullName": "dancingmemory/dskin",
+      "name": "dskin",
+      "title": "DSKIN",
+      "titleZh": "DSKIN 像素皮肤",
+      "summary": "Cartoon pixel skin plugin for DeepSeek Harness Web GUI with living pixel pets that stroll, blink, and hop.",
+      "summaryZh": "DeepSeek Harness 卡通像素皮肤插件，保留原界面，加入会散步、眨眼、跳跃的像素宠物。",
+      "category": "skin",
+      "tags": [
+        "skin",
+        "theme",
+        "pixel",
+        "pet",
+        "web-ui"
+      ],
+      "keywordsZh": [
+        "皮肤",
+        "主题",
+        "像素",
+        "宠物",
+        "动画",
+        "可爱"
+      ],
+      "language": "TypeScript",
+      "stars": 25,
+      "lastChecked": "2026-08-16",
+      "verified": {
+        "packageName": "dskin",
+        "bundlePatch": "./cordis.patch.yml",
+        "client": true
+      }
+    },
+    {
+      "fullName": "KinGao294/dsh-skin",
+      "name": "dsh-skin",
+      "title": "DSH Skin",
+      "titleZh": "DSH 换肤与壁纸",
+      "summary": "Skin switcher and custom wallpaper controls for DeepSeek Harness, including palettes and persisted wallpaper settings.",
+      "summaryZh": "DeepSeek Harness 换肤和自定义壁纸插件，支持预设色板、透明壁纸、模糊和浏览器持久化。",
+      "category": "skin",
+      "tags": [
+        "skin",
+        "theme",
+        "wallpaper",
+        "settings",
+        "web-ui"
+      ],
+      "keywordsZh": [
+        "皮肤",
+        "主题",
+        "壁纸",
+        "换肤",
+        "背景",
+        "设置"
+      ],
+      "language": "JavaScript",
+      "stars": 11,
+      "lastChecked": "2026-08-16",
+      "verified": {
+        "packageName": "dsh-skin",
+        "bundlePatch": "./cordis.patch.yml",
+        "client": true
+      }
+    },
+    {
+      "fullName": "ManuSpurs/dsh-skin20260814",
+      "name": "dsh-skin",
+      "title": "DSH Skin Enhanced",
+      "titleZh": "DSH 增强换肤",
+      "summary": "Enhanced dsh-skin variant with upload fixes, theme guard fixes, and IndexedDB wallpaper storage.",
+      "summaryZh": "dsh-skin 增强版，修复大图上传和主题递归问题，并用 IndexedDB 保存原画质壁纸。",
+      "category": "skin",
+      "tags": [
+        "skin",
+        "theme",
+        "wallpaper",
+        "indexeddb",
+        "fix"
+      ],
+      "keywordsZh": [
+        "皮肤",
+        "主题",
+        "壁纸",
+        "增强版",
+        "上传",
+        "修复"
+      ],
+      "language": "JavaScript",
+      "stars": 3,
+      "lastChecked": "2026-08-16",
+      "verified": {
+        "packageName": "dsh-skin",
+        "bundlePatch": "./cordis.patch.yml",
+        "client": true
+      }
+    },
+    {
+      "fullName": "luoyan96/dsh-catnap-studio",
+      "name": "dsh-client-ui-skin-catnap",
+      "title": "DSH Catnap Studio",
+      "titleZh": "DSH 猫咪工坊皮肤",
+      "summary": "Three-in-one cat-themed skin plugin for DeepSeek Harness Web UI.",
+      "summaryZh": "DeepSeek Harness Web UI 三合一猫咪主题皮肤，内置暖纸猫窝、月夜守护和猫咪工坊。",
+      "category": "skin",
+      "tags": [
+        "skin",
+        "theme",
+        "cat",
+        "catgirl",
+        "web-ui"
+      ],
+      "keywordsZh": [
+        "皮肤",
+        "主题",
+        "猫咪",
+        "猫娘",
+        "猫窝",
+        "可爱"
+      ],
+      "language": "TypeScript",
+      "stars": 1,
+      "lastChecked": "2026-08-16",
+      "verified": {
+        "packageName": "dsh-client-ui-skin-catnap",
+        "bundlePatch": "./cordis.patch.yml",
+        "client": true
+      }
+    },
+    {
+      "fullName": "Lzh-12/dsh-skin-picker",
+      "name": "dsh-skin-picker",
+      "title": "DSH Skin Picker",
+      "titleZh": "DSH 皮肤选择器",
+      "summary": "DeepSeek Harness skin picker with preset skins, natural language theme switching, custom backgrounds, and settings integration.",
+      "summaryZh": "DeepSeek Harness 皮肤选择器，包含 10 套预设、自然语言换肤、自定义背景和设置页联动。",
+      "category": "skin",
+      "tags": [
+        "skin",
+        "theme",
+        "picker",
+        "wallpaper",
+        "settings"
+      ],
+      "keywordsZh": [
+        "皮肤",
+        "主题",
+        "选择器",
+        "预设",
+        "自然语言",
+        "背景"
+      ],
+      "language": "JavaScript",
+      "stars": 1,
+      "lastChecked": "2026-08-16",
+      "verified": {
+        "packageName": "dsh-skin-picker",
+        "bundlePatch": "./cordis.patch.yml",
+        "client": true
+      }
+    },
+    {
+      "fullName": "R3alloc/dsh-session-deeplink",
+      "name": "dsh-session-deeplink",
+      "title": "DSH Session Deeplink",
+      "titleZh": "DSH 会话深链",
+      "summary": "Open a DSH session directly from a URL query parameter.",
+      "summaryZh": "通过 URL 参数直接打开指定 DSH 会话，适合分享和跳转。",
+      "category": "workflow",
+      "tags": [
+        "session",
+        "deeplink",
+        "routing",
+        "web-ui"
+      ],
+      "keywordsZh": [
+        "会话",
+        "深链",
+        "链接",
+        "分享",
+        "跳转"
+      ],
+      "language": "JavaScript",
+      "stars": 6,
+      "lastChecked": "2026-08-16",
+      "verified": {
+        "packageName": "dsh-session-deeplink",
+        "bundlePatch": "./cordis.patch.yml",
+        "client": true
+      }
+    },
+    {
+      "fullName": "tensorlakeai/dsh-tensorlake-sandbox",
+      "name": "@tensorlakeai/dsh-sandbox",
+      "title": "Tensorlake Sandbox",
+      "titleZh": "Tensorlake 沙箱执行器",
+      "summary": "Tensorlake sandbox execution providers for DeepSeek Harness.",
+      "summaryZh": "为 DSH 提供 Tensorlake 沙箱执行能力，偏执行和工具后端。",
+      "category": "runtime",
+      "tags": [
+        "sandbox",
+        "execution",
+        "provider",
+        "runtime"
+      ],
+      "keywordsZh": [
+        "沙箱",
+        "执行",
+        "运行时",
+        "工具",
+        "后端"
+      ],
+      "language": "TypeScript",
+      "stars": 5,
+      "lastChecked": "2026-08-16",
+      "verified": {
+        "packageName": "@tensorlakeai/dsh-sandbox",
+        "bundlePatch": "./cordis.patch.yml",
+        "client": false
+      }
+    },
+    {
+      "fullName": "bugmaker2/dsh-plugin-template",
+      "name": "dsh-plugin-template",
+      "title": "DSH Plugin Template",
+      "titleZh": "DSH 插件开发模板",
+      "summary": "Minimal Hello World plugin template for DeepSeek Harness.",
+      "summaryZh": "最小 Hello World 插件模板，适合学习 DSH 插件结构。",
+      "category": "developer",
+      "tags": [
+        "template",
+        "developer",
+        "hello-world"
+      ],
+      "keywordsZh": [
+        "模板",
+        "开发",
+        "入门",
+        "示例"
+      ],
+      "language": "TypeScript",
+      "stars": 19,
+      "lastChecked": "2026-08-16",
+      "verified": {
+        "packageName": "dsh-plugin-template",
+        "bundlePatch": "./cordis.patch.yml",
+        "client": false
+      }
+    }
+  ]
+}

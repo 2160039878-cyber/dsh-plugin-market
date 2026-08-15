@@ -9,377 +9,7 @@ window.__ModuleLoader__.load({
     const ROOT_ID = "dsh-plugin-market-root";
     const STYLE_ID = "dsh-plugin-market-style";
     const DEFAULT_QUERY = "";
-    const QUERY_PLACEHOLDER = "中文/英文搜目录，或输入 owner/repo";
-    const REGISTRY_UPDATED_AT = "2026-08-16";
-    const REGISTRY =     [
-          {
-                "fullName": "dsh-market/dsh-market",
-                "name": "dshmarket",
-                "title": "DSH Market",
-                "titleZh": "DSH 可视化插件市场",
-                "summary": "Visual marketplace inside DeepSeek Harness for browsing, searching, and installing community plugins.",
-                "summaryZh": "DeepSeek Harness 内的可视化插件市场，用来浏览、搜索和安装社区插件。",
-                "category": "market",
-                "tags": [
-                      "market",
-                      "visual",
-                      "install",
-                      "web-ui"
-                ],
-                "keywordsZh": [
-                      "可视化",
-                      "插件市场",
-                      "安装",
-                      "社区插件"
-                ],
-                "language": "TypeScript",
-                "stars": 266,
-                "lastChecked": "2026-08-16",
-                "verified": {
-                      "packageName": "dshmarket",
-                      "bundlePatch": "./cordis.patch.yml",
-                      "client": true
-                }
-          },
-          {
-                "fullName": "bradeGithub/DSH-Plugins-Marketplace",
-                "name": "dsh-plugin-marketplace",
-                "title": "DSH Plugins Marketplace",
-                "titleZh": "DSH 插件市场",
-                "summary": "Browse and install plugins from the GitHub dsh-plugin topic.",
-                "summaryZh": "在 DSH Web 里浏览 GitHub dsh-plugin 主题下的插件候选。",
-                "category": "market",
-                "tags": [
-                      "market",
-                      "github-search",
-                      "install",
-                      "web-ui"
-                ],
-                "keywordsZh": [
-                      "插件市场",
-                      "安装",
-                      "搜索",
-                      "可视化"
-                ],
-                "language": "JavaScript",
-                "stars": 68,
-                "lastChecked": "2026-08-16",
-                "verified": {
-                      "packageName": "dsh-plugin-marketplace",
-                      "bundlePatch": "./cordis.patch.yml",
-                      "client": true
-                }
-          },
-          {
-                "fullName": "2160039878-cyber/dsh-plugin-market",
-                "name": "dsh-plugin-market",
-                "title": "DSH Plugin Market",
-                "titleZh": "DSH 插件市场",
-                "summary": "A verified-first plugin directory and GitHub discovery helper for DeepSeek Harness Web.",
-                "summaryZh": "目录优先的 DSH 插件商店，可浏览已验证插件，也可发现 GitHub 线索。",
-                "category": "market",
-                "tags": [
-                      "market",
-                      "directory",
-                      "github-search",
-                      "web-ui"
-                ],
-                "keywordsZh": [
-                      "插件市场",
-                      "目录",
-                      "搜索",
-                      "商店",
-                      "中文"
-                ],
-                "language": "JavaScript",
-                "stars": 0,
-                "lastChecked": "2026-08-16",
-                "verified": {
-                      "packageName": "dsh-plugin-market",
-                      "bundlePatch": "./cordis.patch.yml",
-                      "client": true
-                }
-          },
-          {
-                "fullName": "KYZHXL/dsh-manager",
-                "name": "@snowsalt/dsh-manager",
-                "title": "DSH Manager",
-                "titleZh": "DSH 插件管理器",
-                "summary": "ComfyUI-Manager-style plugin marketplace for browsing, installing, updating, and removing DSH plugins.",
-                "summaryZh": "类似 ComfyUI-Manager 的 DSH 插件管理器，面向浏览、安装、更新和移除。",
-                "category": "manager",
-                "tags": [
-                      "manager",
-                      "market",
-                      "install",
-                      "update",
-                      "remove"
-                ],
-                "keywordsZh": [
-                      "管理器",
-                      "安装",
-                      "更新",
-                      "卸载",
-                      "插件市场"
-                ],
-                "language": "TypeScript",
-                "stars": 4,
-                "lastChecked": "2026-08-16",
-                "verified": {
-                      "packageName": "@snowsalt/dsh-manager",
-                      "bundlePatch": "./cordis.patch.yml",
-                      "client": false
-                }
-          },
-          {
-                "fullName": "dancingmemory/dskin",
-                "name": "dskin",
-                "title": "DSKIN",
-                "titleZh": "DSKIN 像素皮肤",
-                "summary": "Cartoon pixel skin plugin for DeepSeek Harness Web GUI with living pixel pets that stroll, blink, and hop.",
-                "summaryZh": "DeepSeek Harness 卡通像素皮肤插件，保留原界面，加入会散步、眨眼、跳跃的像素宠物。",
-                "category": "skin",
-                "tags": [
-                      "skin",
-                      "theme",
-                      "pixel",
-                      "pet",
-                      "web-ui"
-                ],
-                "keywordsZh": [
-                      "皮肤",
-                      "主题",
-                      "像素",
-                      "宠物",
-                      "动画",
-                      "可爱"
-                ],
-                "language": "TypeScript",
-                "stars": 25,
-                "lastChecked": "2026-08-16",
-                "verified": {
-                      "packageName": "dskin",
-                      "bundlePatch": "./cordis.patch.yml",
-                      "client": true
-                }
-          },
-          {
-                "fullName": "KinGao294/dsh-skin",
-                "name": "dsh-skin",
-                "title": "DSH Skin",
-                "titleZh": "DSH 换肤与壁纸",
-                "summary": "Skin switcher and custom wallpaper controls for DeepSeek Harness, including palettes and persisted wallpaper settings.",
-                "summaryZh": "DeepSeek Harness 换肤和自定义壁纸插件，支持预设色板、透明壁纸、模糊和浏览器持久化。",
-                "category": "skin",
-                "tags": [
-                      "skin",
-                      "theme",
-                      "wallpaper",
-                      "settings",
-                      "web-ui"
-                ],
-                "keywordsZh": [
-                      "皮肤",
-                      "主题",
-                      "壁纸",
-                      "换肤",
-                      "背景",
-                      "设置"
-                ],
-                "language": "JavaScript",
-                "stars": 11,
-                "lastChecked": "2026-08-16",
-                "verified": {
-                      "packageName": "dsh-skin",
-                      "bundlePatch": "./cordis.patch.yml",
-                      "client": true
-                }
-          },
-          {
-                "fullName": "ManuSpurs/dsh-skin20260814",
-                "name": "dsh-skin",
-                "title": "DSH Skin Enhanced",
-                "titleZh": "DSH 增强换肤",
-                "summary": "Enhanced dsh-skin variant with upload fixes, theme guard fixes, and IndexedDB wallpaper storage.",
-                "summaryZh": "dsh-skin 增强版，修复大图上传和主题递归问题，并用 IndexedDB 保存原画质壁纸。",
-                "category": "skin",
-                "tags": [
-                      "skin",
-                      "theme",
-                      "wallpaper",
-                      "indexeddb",
-                      "fix"
-                ],
-                "keywordsZh": [
-                      "皮肤",
-                      "主题",
-                      "壁纸",
-                      "增强版",
-                      "上传",
-                      "修复"
-                ],
-                "language": "JavaScript",
-                "stars": 3,
-                "lastChecked": "2026-08-16",
-                "verified": {
-                      "packageName": "dsh-skin",
-                      "bundlePatch": "./cordis.patch.yml",
-                      "client": true
-                }
-          },
-          {
-                "fullName": "luoyan96/dsh-catnap-studio",
-                "name": "dsh-client-ui-skin-catnap",
-                "title": "DSH Catnap Studio",
-                "titleZh": "DSH 猫咪工坊皮肤",
-                "summary": "Three-in-one cat-themed skin plugin for DeepSeek Harness Web UI.",
-                "summaryZh": "DeepSeek Harness Web UI 三合一猫咪主题皮肤，内置暖纸猫窝、月夜守护和猫咪工坊。",
-                "category": "skin",
-                "tags": [
-                      "skin",
-                      "theme",
-                      "cat",
-                      "catgirl",
-                      "web-ui"
-                ],
-                "keywordsZh": [
-                      "皮肤",
-                      "主题",
-                      "猫咪",
-                      "猫娘",
-                      "猫窝",
-                      "可爱"
-                ],
-                "language": "TypeScript",
-                "stars": 1,
-                "lastChecked": "2026-08-16",
-                "verified": {
-                      "packageName": "dsh-client-ui-skin-catnap",
-                      "bundlePatch": "./cordis.patch.yml",
-                      "client": true
-                }
-          },
-          {
-                "fullName": "Lzh-12/dsh-skin-picker",
-                "name": "dsh-skin-picker",
-                "title": "DSH Skin Picker",
-                "titleZh": "DSH 皮肤选择器",
-                "summary": "DeepSeek Harness skin picker with preset skins, natural language theme switching, custom backgrounds, and settings integration.",
-                "summaryZh": "DeepSeek Harness 皮肤选择器，包含 10 套预设、自然语言换肤、自定义背景和设置页联动。",
-                "category": "skin",
-                "tags": [
-                      "skin",
-                      "theme",
-                      "picker",
-                      "wallpaper",
-                      "settings"
-                ],
-                "keywordsZh": [
-                      "皮肤",
-                      "主题",
-                      "选择器",
-                      "预设",
-                      "自然语言",
-                      "背景"
-                ],
-                "language": "JavaScript",
-                "stars": 1,
-                "lastChecked": "2026-08-16",
-                "verified": {
-                      "packageName": "dsh-skin-picker",
-                      "bundlePatch": "./cordis.patch.yml",
-                      "client": true
-                }
-          },
-          {
-                "fullName": "R3alloc/dsh-session-deeplink",
-                "name": "dsh-session-deeplink",
-                "title": "DSH Session Deeplink",
-                "titleZh": "DSH 会话深链",
-                "summary": "Open a DSH session directly from a URL query parameter.",
-                "summaryZh": "通过 URL 参数直接打开指定 DSH 会话，适合分享和跳转。",
-                "category": "workflow",
-                "tags": [
-                      "session",
-                      "deeplink",
-                      "routing",
-                      "web-ui"
-                ],
-                "keywordsZh": [
-                      "会话",
-                      "深链",
-                      "链接",
-                      "分享",
-                      "跳转"
-                ],
-                "language": "JavaScript",
-                "stars": 6,
-                "lastChecked": "2026-08-16",
-                "verified": {
-                      "packageName": "dsh-session-deeplink",
-                      "bundlePatch": "./cordis.patch.yml",
-                      "client": true
-                }
-          },
-          {
-                "fullName": "tensorlakeai/dsh-tensorlake-sandbox",
-                "name": "@tensorlakeai/dsh-sandbox",
-                "title": "Tensorlake Sandbox",
-                "titleZh": "Tensorlake 沙箱执行器",
-                "summary": "Tensorlake sandbox execution providers for DeepSeek Harness.",
-                "summaryZh": "为 DSH 提供 Tensorlake 沙箱执行能力，偏执行和工具后端。",
-                "category": "runtime",
-                "tags": [
-                      "sandbox",
-                      "execution",
-                      "provider",
-                      "runtime"
-                ],
-                "keywordsZh": [
-                      "沙箱",
-                      "执行",
-                      "运行时",
-                      "工具",
-                      "后端"
-                ],
-                "language": "TypeScript",
-                "stars": 5,
-                "lastChecked": "2026-08-16",
-                "verified": {
-                      "packageName": "@tensorlakeai/dsh-sandbox",
-                      "bundlePatch": "./cordis.patch.yml",
-                      "client": false
-                }
-          },
-          {
-                "fullName": "bugmaker2/dsh-plugin-template",
-                "name": "dsh-plugin-template",
-                "title": "DSH Plugin Template",
-                "titleZh": "DSH 插件开发模板",
-                "summary": "Minimal Hello World plugin template for DeepSeek Harness.",
-                "summaryZh": "最小 Hello World 插件模板，适合学习 DSH 插件结构。",
-                "category": "developer",
-                "tags": [
-                      "template",
-                      "developer",
-                      "hello-world"
-                ],
-                "keywordsZh": [
-                      "模板",
-                      "开发",
-                      "入门",
-                      "示例"
-                ],
-                "language": "TypeScript",
-                "stars": 19,
-                "lastChecked": "2026-08-16",
-                "verified": {
-                      "packageName": "dsh-plugin-template",
-                      "bundlePatch": "./cordis.patch.yml",
-                      "client": false
-                }
-          }
-    ];
+    const QUERY_PLACEHOLDER = "owner/repo 或 topic:dsh-plugins -user:deepseek-ai";
     const healthCache = new Map();
 
     const css = `
@@ -562,12 +192,6 @@ window.__ModuleLoader__.load({
 .dpm-button:disabled {
   opacity: .55;
   cursor: default;
-}
-
-.dpm-button-secondary {
-  border-color: var(--dsw-alias-border-l2, rgba(255,255,255,.18));
-  background: transparent;
-  color: var(--dsw-alias-label-primary, #f7f7fb);
 }
 
 .dpm-results {
@@ -830,98 +454,6 @@ window.__ModuleLoader__.load({
       return `dsh plugin --profile web add github:${repo.full_name}`;
     }
 
-    function categoryLabel(category) {
-      return {
-        market: "市场",
-        developer: "开发",
-        workflow: "工作流",
-        runtime: "运行时",
-        manager: "管理"
-      }[category] || category || "插件";
-    }
-
-    function verifiedHealth(plugin) {
-      const findings = [
-        { label: `包名 ${plugin.verified.packageName}`, tone: "good" },
-        { label: "有 dsh.bundle", tone: "good" },
-        { label: `patch 存在 ${plugin.verified.bundlePatch}`, tone: "good" },
-        { label: plugin.verified.client ? "Web client 入口" : "Host 插件", tone: plugin.verified.client ? "good" : "warn" }
-      ];
-      return {
-        status: "good",
-        title: "已验证：可作为 DSH 插件安装",
-        note: `内置目录最后校验：${REGISTRY_UPDATED_AT}。安装前仍建议打开 GitHub 看 README。`,
-        findings
-      };
-    }
-
-    function registryRepo(plugin) {
-      return {
-        full_name: plugin.fullName,
-        html_url: `https://github.com/${plugin.fullName}`,
-        description: `${plugin.titleZh} · ${plugin.summaryZh}`,
-        stargazers_count: plugin.stars,
-        forks_count: 0,
-        updated_at: REGISTRY_UPDATED_AT,
-        language: plugin.language,
-        default_branch: "main",
-        dpmRegistry: true,
-        dpmCategory: plugin.category,
-        dpmTitle: plugin.titleZh,
-        dpmHealth: verifiedHealth(plugin)
-      };
-    }
-
-    function expandQuery(query) {
-      const value = String(query || "").toLowerCase().trim();
-      const expansions = [];
-      const rules = [
-        [/皮肤|主题/, "skin theme"],
-        [/界面|ui/, "visual ui web-ui"],
-        [/市场|商店|目录|插件库/, "market store directory marketplace manager"],
-        [/搜索|github|发现/, "search github discovery"],
-        [/安装|更新|卸载|管理/, "install update remove manager"],
-        [/模板|开发|入门|示例/, "template developer hello-world"],
-        [/会话|链接|分享|跳转/, "session deeplink routing share"],
-        [/沙箱|执行|运行时|工具/, "sandbox execution runtime provider"]
-      ];
-      for (const [pattern, words] of rules) {
-        if (pattern.test(value)) expansions.push(words);
-      }
-      return `${value} ${expansions.join(" ")}`.trim();
-    }
-
-    function registryMatches(plugin, query) {
-      const raw = String(query || "").toLowerCase().trim();
-      const expanded = expandQuery(query);
-      if (!raw) return true;
-      const haystack = [
-        plugin.fullName,
-        plugin.name,
-        plugin.title,
-        plugin.titleZh,
-        plugin.summary,
-        plugin.summaryZh,
-        plugin.category,
-        ...(plugin.tags || []),
-        ...(plugin.keywordsZh || [])
-      ].join(" ").toLowerCase();
-      if (haystack.includes(raw)) return true;
-      return expanded.split(/\s+/).filter((term) => term.length >= 2).some((term) => haystack.includes(term));
-    }
-
-    function registryData(query = "") {
-      const items = REGISTRY.filter((plugin) => registryMatches(plugin, query)).map(registryRepo);
-      const suffix = query ? `，匹配 ${items.length} 个` : "";
-      return {
-        total_count: REGISTRY.length,
-        items,
-        dpmStatus: query && items.length === 0
-          ? `内置目录没有匹配“${query}”的已验证插件。可以点“搜 GitHub”发现线索，未通过体检的结果不会启用安装命令。`
-          : `内置目录：${REGISTRY.length} 个已验证 DSH 插件，最后校验 ${REGISTRY_UPDATED_AT}${suffix}。`
-      };
-    }
-
     function parseDirectRepoQuery(query) {
       const match = String(query || "").trim().match(/^(?:https:\/\/github\.com\/)?([A-Za-z0-9_.-]+)\/([A-Za-z0-9_.-]+)\/?$/);
       if (!match) return null;
@@ -1120,8 +652,8 @@ window.__ModuleLoader__.load({
         <div class="dpm-panel" role="dialog" aria-modal="false" aria-label="DSH 插件市场助手">
           <div class="dpm-header">
             <div class="dpm-title">
-              <strong>DSH 插件商店</strong>
-              <span>默认显示已验证目录；中文搜索走本地目录，GitHub 只用于发现线索。</span>
+              <strong>DSH 插件市场助手</strong>
+              <span>只读搜索 GitHub；也支持直接粘贴 owner/repo，复制安装命令，不自动安装。</span>
             </div>
             <button class="dpm-icon-button" type="button" data-dpm-refresh title="刷新">${icons.refresh}</button>
             <button class="dpm-icon-button" type="button" data-dpm-close title="关闭">${icons.close}</button>
@@ -1133,14 +665,17 @@ window.__ModuleLoader__.load({
               <option value="updated">按更新</option>
               <option value="forks">按 fork</option>
             </select>
-            <button class="dpm-button" type="submit">搜目录</button>
-            <button class="dpm-button dpm-button-secondary" type="button" data-dpm-github>搜 GitHub</button>
+            <label class="dpm-filter" title="开启后只显示体检通过的 DSH bundle">
+              <input type="checkbox" name="strict" checked />
+              <span>只显示插件</span>
+            </label>
+            <button class="dpm-button" type="submit">搜索</button>
           </form>
           <div class="dpm-results" data-dpm-results>
-            <div class="dpm-status">正在加载内置目录...</div>
+            <div class="dpm-status">默认不会自动联网。建议先输入 <code>owner/repo</code> 直接检查；关键词搜索需要能访问 GitHub Search API。</div>
           </div>
           <div class="dpm-footer">
-            <span>安装命令只在体检通过后启用；GitHub 结果默认只是线索。</span>
+            <span>命令只是候选；仓库必须声明 <code>dsh.bundle</code> 才能作为插件挂载。</span>
             <a href="https://github.com/topics/dsh-plugins" target="_blank" rel="noreferrer">GitHub topic</a>
           </div>
         </div>
@@ -1195,7 +730,7 @@ window.__ModuleLoader__.load({
         link.href = homepage;
         link.target = "_blank";
         link.rel = "noreferrer";
-        link.textContent = repo.dpmTitle ? `${repo.dpmTitle} · ${repo.full_name}` : repo.full_name;
+        link.textContent = repo.full_name;
         const desc = document.createElement("p");
         desc.className = "dpm-desc";
         desc.textContent = description;
@@ -1204,12 +739,11 @@ window.__ModuleLoader__.load({
         const meta = document.createElement("div");
         meta.className = "dpm-meta";
         const fields = [
-          repo.dpmCategory ? categoryLabel(repo.dpmCategory) : "",
           `star ${formatCount(repo.stargazers_count)}`,
           `fork ${formatCount(repo.forks_count)}`,
           `更新 ${formatDate(repo.updated_at)}`,
           language
-        ].filter(Boolean);
+        ];
         for (const value of fields) {
           const pill = document.createElement("span");
           pill.className = "dpm-pill";
@@ -1304,7 +838,7 @@ window.__ModuleLoader__.load({
         results.replaceChildren();
         const total = Number(data.total_count) || 0;
         if (!Array.isArray(data.items) || data.items.length === 0) {
-          setStatus(text(data.dpmStatus, "目录里没有匹配插件。可以换中文关键词，或点“搜 GitHub”发现线索。"));
+          setStatus("没有匹配仓库。换个关键词试试，比如 topic:dsh-plugins -user:deepseek-ai，或直接输入 owner/repo。");
           return;
         }
         const status = document.createElement("div");
@@ -1316,26 +850,14 @@ window.__ModuleLoader__.load({
         results.append(status, list);
       }
 
-      function searchDirectory() {
-        const seq = ++searchSeq;
-        const values = new FormData(form);
-        const query = String(values.get("query") || "").trim();
-        const directRepo = fetchDirectRepo(query);
-        if (directRepo) {
-          directRepo.dpmStatus = "直接仓库查询：已跳过 GitHub Search API。请点“体检插件”，通过后才能复制安装命令。";
-          render(directRepo);
-          return;
-        }
-        render(registryData(query));
-      }
-
-      async function discoverGithub() {
+      async function search() {
         const seq = ++searchSeq;
         const values = new FormData(form);
         const query = String(values.get("query") || "").trim();
         const sort = String(values.get("sort") || "stars");
+        const strict = values.get("strict") === "on";
         if (!query) {
-          setStatus("搜 GitHub 前先输入关键词；中文词也可以，比如：插件市场、皮肤、沙箱、会话。");
+          setStatus("先输入 owner/repo 直接检查，或输入关键词再走 GitHub 搜索。");
           return;
         }
         searchButton.disabled = true;
@@ -1347,8 +869,7 @@ window.__ModuleLoader__.load({
             if (seq === searchSeq) render(directRepo);
             return;
           }
-          const githubQuery = /[\u4e00-\u9fff]/.test(query) ? `${expandQuery(query)} deepseek harness dsh plugin` : query;
-          const url = `https://api.github.com/search/repositories?q=${encodeURIComponent(githubQuery)}&sort=${encodeURIComponent(sort)}&order=desc&per_page=20`;
+          const url = `https://api.github.com/search/repositories?q=${encodeURIComponent(query)}&sort=${encodeURIComponent(sort)}&order=desc&per_page=20`;
           const response = await fetch(url, {
             headers: {
               Accept: "application/vnd.github+json"
@@ -1358,6 +879,10 @@ window.__ModuleLoader__.load({
           if (!response.ok) {
             const message = text(data?.message, `GitHub API ${response.status}`);
             throw new Error(message);
+          }
+          if (!strict) {
+            if (seq === searchSeq) render(data);
+            return;
           }
 
           if (seq === searchSeq) setStatus(`GitHub 返回 ${formatCount(data.total_count)} 个候选，正在体检前 ${data.items.length} 个...`);
@@ -1391,15 +916,13 @@ window.__ModuleLoader__.load({
 
       launcher.addEventListener("click", () => setOpen(!root.classList.contains("dpm-open")));
       root.querySelector("[data-dpm-close]").addEventListener("click", () => setOpen(false));
-      root.querySelector("[data-dpm-refresh]").addEventListener("click", () => searchDirectory());
-      root.querySelector("[data-dpm-github]").addEventListener("click", () => discoverGithub());
+      root.querySelector("[data-dpm-refresh]").addEventListener("click", () => search());
       form.addEventListener("submit", (event) => {
         event.preventDefault();
-        searchDirectory();
+        void search();
       });
       document.addEventListener("keydown", onKeydown);
       document.body.appendChild(root);
-      render(registryData());
 
       return () => {
         window.clearTimeout(toastTimer);

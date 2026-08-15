@@ -1,12 +1,12 @@
 # DSH Plugin Market
 
-> A verified-first plugin store DeepSeek Harness can actually use.
+> The loud little plugin radar DeepSeek Harness should have shipped with.
 
 [![DeepSeek Harness](https://img.shields.io/badge/DeepSeek%20Harness-0.1.0--rc.6-black)](https://deepseek.com/harness/)
 [![Plugin](https://img.shields.io/badge/DSH-plugin-blueviolet)](https://github.com/topics/dsh-plugins)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-`dsh-plugin-market` adds a floating verified plugin store to DeepSeek Harness Web. It opens with a local curated directory, supports Chinese and English search, can discover GitHub leads, checks whether a repository looks installable, opens GitHub, and only enables install-command copying after verification.
+`dsh-plugin-market` adds a floating GitHub-powered plugin browser to DeepSeek Harness Web. It is intentionally small, fast, and non-invasive: search repositories, compare stars, inspect whether a repository looks installable, open GitHub, copy the install command, then decide for yourself.
 
 ![DSH Plugin Market screenshot](docs/screenshot.png)
 
@@ -14,24 +14,21 @@
 
 DeepSeek Harness says everything is a plugin. Great. But the ecosystem is already noisy: topics, awesome lists, random forks, half-working experiments, and hidden gems are all mixed together.
 
-This plugin gives you a safer store inside DSH:
+This plugin gives you a radar inside DSH:
 
-- Browse 12 verified plugins without leaving the app, including market, manager, skin, workflow, runtime, and developer entries.
-- Search the directory in Chinese or English.
+- Find DSH-related repositories without leaving the app.
 - Paste an exact `owner/repo` or GitHub repository URL when search indexing is slow.
-- Use GitHub search only as lead discovery.
-- See Chinese summaries, stars, language, update time, and descriptions at a glance.
-- Copy a `dsh plugin --profile web add ...` command only after the repository passes checks.
+- See stars, forks, language, update time, and descriptions at a glance.
+- Copy a candidate `dsh plugin --profile web add ...` command.
 - Run a quick installability check for `package.json`, `dsh.bundle.patch`, patch files, and Web client entry points.
 - Stay safe: no automatic remote install, no API key access, no hidden writes.
 
 ## Features
 
-- Verified directory first: no network request is needed to show usable plugins.
-- Chinese search expansion: words like `皮肤`, `市场`, `沙箱`, `会话`, `模板` map to relevant English tags.
+- Default search: `topic:dsh-plugins -user:deepseek-ai`.
 - The panel does not auto-search on open; this avoids immediate failures when `api.github.com` is blocked or rate-limited.
-- GitHub discovery is explicit: click `搜 GitHub` to search remote leads.
-- GitHub leads are checked; unverified candidates are shown but install command copying stays disabled.
+- Strict mode is enabled by default: normal search results are hidden unless the repository passes the DSH bundle health check.
+- If strict search finds no verified plugins, raw candidates are still shown as leads, but install command copying stays disabled.
 - Direct repository lookup without the GitHub Search API: `2160039878-cyber/dsh-plugin-market` or `https://github.com/2160039878-cyber/dsh-plugin-market`.
 - Sort by stars, update time, or forks.
 - Open matching repositories on GitHub.
@@ -41,16 +38,6 @@ This plugin gives you a safer store inside DSH:
 - No build step.
 - No dependencies.
 - No token storage.
-
-## Registry
-
-The built-in directory lives in [`registry/plugins.json`](registry/plugins.json). Entries are intentionally conservative: a repository must expose a root `package.json`, declare `dsh.bundle.patch`, and have the referenced patch file available. As of v0.3.0 it includes 12 checked repositories, with skin/theme plugins such as `dancingmemory/dskin`, `KinGao294/dsh-skin`, and `luoyan96/dsh-catnap-studio`.
-
-Check the registry locally:
-
-```powershell
-npm run check
-```
 
 ## Install
 
@@ -91,12 +78,12 @@ It does not:
 
 ## Status
 
-v0.3.0. Directory-first, includes verified skin/theme plugins, and usable without GitHub search.
+MVP. Useful now, intentionally not clever yet.
 
 Planned only if needed:
 
 - installed-plugin detection;
-- richer registry review workflow;
+- richer plugin verification;
 - better category filters;
 - GitHub rate-limit status;
 - one-click install behind explicit confirmation.
@@ -105,8 +92,6 @@ Planned only if needed:
 
 Historical source snapshots are kept in [`archive/`](archive/) in addition to Git tags and GitHub releases.
 
-- [`archive/v0.2.3`](archive/v0.2.3): checked candidates fallback when no plugins pass.
-- [`archive/v0.2.3.zip`](archive/v0.2.3.zip): the same snapshot as a zip package.
 - [`archive/v0.2.2`](archive/v0.2.2): no automatic GitHub search on panel open.
 - [`archive/v0.2.2.zip`](archive/v0.2.2.zip): the same snapshot as a zip package.
 - [`archive/v0.2.1`](archive/v0.2.1): strict DSH plugin filtering by default.
