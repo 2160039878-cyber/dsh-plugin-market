@@ -6,7 +6,7 @@
 [![Plugin](https://img.shields.io/badge/DSH-plugin-blueviolet)](https://github.com/topics/dsh-plugins)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-`dsh-plugin-market` adds a floating GitHub-powered plugin browser to DeepSeek Harness Web. It is intentionally small, fast, and non-invasive: search repositories, compare stars, inspect whether a repository looks installable, open GitHub, copy the install command, then decide for yourself.
+`dsh-plugin-market` adds a floating GitHub-powered plugin browser to DeepSeek Harness Web. It is intentionally small, fast, and non-invasive: search repositories, compare stars, open GitHub, copy the install command, then decide for yourself.
 
 ![DSH Plugin Market screenshot](docs/screenshot.png)
 
@@ -17,19 +17,15 @@ DeepSeek Harness says everything is a plugin. Great. But the ecosystem is alread
 This plugin gives you a radar inside DSH:
 
 - Find DSH-related repositories without leaving the app.
-- Paste an exact `owner/repo` or GitHub repository URL when search indexing is slow.
 - See stars, forks, language, update time, and descriptions at a glance.
 - Copy a candidate `dsh plugin --profile web add ...` command.
-- Run a quick installability check for `package.json`, `dsh.bundle.patch`, patch files, and Web client entry points.
 - Stay safe: no automatic remote install, no API key access, no hidden writes.
 
 ## Features
 
 - Default search: `topic:dsh-plugins -user:deepseek-ai`.
-- Direct repository lookup without the GitHub Search API: `2160039878-cyber/dsh-plugin-market` or `https://github.com/2160039878-cyber/dsh-plugin-market`.
 - Sort by stars, update time, or forks.
 - Open matching repositories on GitHub.
-- Check whether a repository looks like a real DSH bundle.
 - Copy install commands.
 - Works as a DSH Web client plugin.
 - No build step.
@@ -80,17 +76,10 @@ MVP. Useful now, intentionally not clever yet.
 Planned only if needed:
 
 - installed-plugin detection;
-- richer plugin verification;
+- verified `dsh.bundle` badge;
 - better category filters;
 - GitHub rate-limit status;
 - one-click install behind explicit confirmation.
-
-## Historical Versions
-
-Historical source snapshots are kept in [`archive/`](archive/) in addition to Git tags and GitHub releases.
-
-- [`archive/v0.1.0`](archive/v0.1.0): first public MVP, search + copy install command.
-- [`archive/v0.1.0.zip`](archive/v0.1.0.zip): the same snapshot as a zip package.
 
 ## License
 

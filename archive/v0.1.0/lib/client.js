@@ -9,7 +9,6 @@ window.__ModuleLoader__.load({
     const ROOT_ID = "dsh-plugin-market-root";
     const STYLE_ID = "dsh-plugin-market-style";
     const DEFAULT_QUERY = "topic:dsh-plugins -user:deepseek-ai";
-    const healthCache = new Map();
 
     const css = `
 #${ROOT_ID} {
@@ -249,24 +248,6 @@ window.__ModuleLoader__.load({
   background: var(--dsw-alias-bg-module-platform, rgba(255,255,255,.05));
 }
 
-.dpm-pill[data-tone="good"] {
-  border-color: rgba(80, 210, 150, .36);
-  color: #8cf0bf;
-  background: rgba(80, 210, 150, .10);
-}
-
-.dpm-pill[data-tone="warn"] {
-  border-color: rgba(255, 191, 91, .36);
-  color: #ffd28a;
-  background: rgba(255, 191, 91, .10);
-}
-
-.dpm-pill[data-tone="bad"] {
-  border-color: rgba(255, 112, 132, .36);
-  color: #ff9bac;
-  background: rgba(255, 112, 132, .10);
-}
-
 .dpm-actions {
   display: flex;
   flex-wrap: wrap;
@@ -293,44 +274,6 @@ window.__ModuleLoader__.load({
   border-color: var(--dsw-alias-brand-primary, #4f7cff);
   color: var(--dsw-alias-label-primary, #f7f7fb);
   background: var(--dsw-alias-bg-layer-3, #292b31);
-}
-
-.dpm-action:disabled {
-  opacity: .55;
-  cursor: default;
-}
-
-.dpm-check-result {
-  display: none;
-  gap: 8px;
-  border: 1px solid var(--dsw-alias-border-l2, rgba(255,255,255,.12));
-  border-radius: 8px;
-  padding: 10px;
-  background: rgba(255, 255, 255, .035);
-}
-
-.dpm-check-result[data-show="true"] {
-  display: grid;
-}
-
-.dpm-check-title {
-  color: var(--dsw-alias-label-primary, #f7f7fb);
-  font-size: 12px;
-  font-weight: 650;
-  line-height: 1.4;
-}
-
-.dpm-findings {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.dpm-check-note {
-  margin: 0;
-  color: var(--dsw-alias-label-tertiary, #a8acb7);
-  font-size: 12px;
-  line-height: 1.5;
 }
 
 .dpm-footer {
@@ -420,7 +363,6 @@ window.__ModuleLoader__.load({
     }
 
     function formatDate(value) {
-      if (!value) return "unknown";
       const date = new Date(value);
       if (Number.isNaN(date.getTime())) return "unknown";
       return date.toLocaleDateString("zh-CN", { year: "numeric", month: "2-digit", day: "2-digit" });
@@ -428,132 +370,6 @@ window.__ModuleLoader__.load({
 
     function installCommand(repo) {
       return `dsh plugin --profile web add github:${repo.full_name}`;
-    }
-
-    function parseDirectRepoQuery(query) {
-      const match = String(query || "").trim().match(/^(?:https:\/\/github\.com\/)?([A-Za-z0-9_.-]+)\/([A-Za-z0-9_.-]+)\/?$/);
-      if (!match) return null;
-      return { owner: match[1], repo: match[2] };
-    }
-
-    function fetchDirectRepo(query) {
-      const direct = parseDirectRepoQuery(query);
-      if (!direct) return null;
-      const fullName = `${direct.owner}/${direct.repo}`;
-      return {
-        total_count: 1,
-        items: [{
-          full_name: fullName,
-          html_url: `https://github.com/${fullName}`,
-          description: "Direct repository lookup. Metadata is skipped to avoid GitHub API rate limits.",
-          stargazers_count: 0,
-          forks_count: 0,
-          updated_at: "",
-          language: "direct",
-          default_branch: "main",
-          dpmDirect: true
-        }]
-      };
-    }
-
-    function rawUrl(repo, branch, path) {
-      const clean = String(path || "").replace(/^\.?\//, "");
-      return `https://raw.githubusercontent.com/${repo.full_name}/${branch}/${clean}`;
-    }
-
-    async function fetchRepoFile(repo, path) {
-      const branches = [text(repo.default_branch, "main"), "master"];
-      let last = { ok: false, status: 0, text: "" };
-      for (const branch of [...new Set(branches)]) {
-        const response = await fetch(rawUrl(repo, branch, path), { cache: "no-store" });
-        if (response.ok) return { ok: true, status: response.status, text: await response.text(), branch };
-        last = { ok: false, status: response.status, text: "" };
-      }
-      return last;
-    }
-
-    function normalizePath(value) {
-      return typeof value === "string" && value.trim() ? value.replace(/^\.?\//, "") : "";
-    }
-
-    function boolFinding(label, ok, good, bad) {
-      return {
-        label: ok ? good : bad,
-        tone: ok ? "good" : "bad",
-        detail: label
-      };
-    }
-
-    async function checkRepo(repo) {
-      if (healthCache.has(repo.full_name)) return healthCache.get(repo.full_name);
-
-      const task = (async () => {
-        const packageFile = await fetchRepoFile(repo, "package.json");
-        if (!packageFile.ok) {
-          return {
-            status: "bad",
-            title: "不可判断：没有公开 package.json",
-            note: "这个仓库可能不是 npm/DSH 插件，或者 package.json 不在仓库根目录。",
-            findings: [
-              { label: "无 package.json", tone: "bad" },
-              { label: `HTTP ${packageFile.status}`, tone: "warn" }
-            ]
-          };
-        }
-
-        let pkg;
-        try {
-          pkg = JSON.parse(packageFile.text);
-        } catch {
-          return {
-            status: "bad",
-            title: "不可安装：package.json 不是合法 JSON",
-            note: "DSH profile 依赖安装会读取 package.json；JSON 坏了就不应该安装。",
-            findings: [{ label: "package.json 损坏", tone: "bad" }]
-          };
-        }
-
-        const bundlePatch = normalizePath(pkg?.dsh?.bundle?.patch);
-        const hasBundle = Boolean(bundlePatch);
-        const clientExport = normalizePath(pkg?.exports?.["./client"]);
-        const hasClient = Boolean(pkg?.dsh?.client || clientExport);
-        const patchFile = hasBundle ? await fetchRepoFile(repo, bundlePatch) : { ok: false, status: 0 };
-
-        const findings = [
-          { label: `包名 ${text(pkg.name, "unknown")}`, tone: "good" },
-          boolFinding("dsh.bundle", hasBundle, "有 dsh.bundle", "无 dsh.bundle"),
-          boolFinding("patch file", patchFile.ok, `patch 存在 ${bundlePatch}`, "patch 不存在"),
-          { label: hasClient ? "Web client 入口" : "无 Web client", tone: hasClient ? "good" : "warn" }
-        ];
-
-        if (!hasBundle) {
-          return {
-            status: "bad",
-            title: "不像可挂载的 DSH 插件",
-            note: "缺少 package.json 里的 dsh.bundle.patch；复制安装命令也可能只会装成普通依赖。",
-            findings
-          };
-        }
-
-        if (!patchFile.ok) {
-          return {
-            status: "warn",
-            title: "声明了 DSH bundle，但 patch 文件没取到",
-            note: "可能是路径写错、分支不是默认分支，或仓库结构特殊。安装前要进 GitHub 手动确认。",
-            findings
-          };
-        }
-
-        return {
-          status: "good",
-          title: "看起来可以作为 DSH 插件安装",
-          note: hasClient ? "检测到 bundle patch 和 Web client 入口。" : "检测到 bundle patch；它可能是 host-only 插件，不一定有界面。",
-          findings
-        };
-      })();
-
-      healthCache.set(repo.full_name, task);
-      return task;
     }
 
     async function copyText(value) {
@@ -585,7 +401,7 @@ window.__ModuleLoader__.load({
           <div class="dpm-header">
             <div class="dpm-title">
               <strong>DSH 插件市场助手</strong>
-              <span>只读搜索 GitHub；也支持直接粘贴 owner/repo，复制安装命令，不自动安装。</span>
+              <span>默认排除官方仓库；只读搜索 GitHub，复制安装命令，不自动安装。</span>
             </div>
             <button class="dpm-icon-button" type="button" data-dpm-refresh title="刷新">${icons.refresh}</button>
             <button class="dpm-icon-button" type="button" data-dpm-close title="关闭">${icons.close}</button>
@@ -617,7 +433,6 @@ window.__ModuleLoader__.load({
       const toast = root.querySelector("[data-dpm-toast]");
       const searchButton = root.querySelector(".dpm-button");
       let hasLoaded = false;
-      let searchSeq = 0;
       let toastTimer = 0;
 
       function showToast(message) {
@@ -686,10 +501,6 @@ window.__ModuleLoader__.load({
 
         const actions = document.createElement("div");
         actions.className = "dpm-actions";
-        const check = document.createElement("button");
-        check.type = "button";
-        check.className = "dpm-action";
-        check.textContent = "体检插件";
         const copy = document.createElement("button");
         copy.type = "button";
         copy.className = "dpm-action";
@@ -708,52 +519,10 @@ window.__ModuleLoader__.load({
         open.target = "_blank";
         open.rel = "noreferrer";
         open.innerHTML = `${icons.external}<span>打开 GitHub</span>`;
-        actions.append(check, copy, open);
-
-        const checkResult = document.createElement("div");
-        checkResult.className = "dpm-check-result";
-        const checkTitle = document.createElement("div");
-        checkTitle.className = "dpm-check-title";
-        const findings = document.createElement("div");
-        findings.className = "dpm-findings";
-        const note = document.createElement("p");
-        note.className = "dpm-check-note";
-        checkResult.append(checkTitle, findings, note);
-
-        function renderCheck(result) {
-          checkResult.dataset.show = "true";
-          checkTitle.textContent = result.title;
-          findings.replaceChildren();
-          for (const item of result.findings) {
-            const pill = document.createElement("span");
-            pill.className = "dpm-pill";
-            pill.dataset.tone = item.tone;
-            pill.textContent = item.label;
-            findings.appendChild(pill);
-          }
-          note.textContent = result.note;
-        }
-
-        check.addEventListener("click", async () => {
-          check.disabled = true;
-          check.textContent = "体检中...";
-          try {
-            renderCheck(await checkRepo(repo));
-          } catch (error) {
-            renderCheck({
-              status: "warn",
-              title: "体检失败",
-              note: error instanceof Error ? error.message : String(error),
-              findings: [{ label: "GitHub 请求失败", tone: "warn" }]
-            });
-          } finally {
-            check.disabled = false;
-            check.textContent = "重新体检";
-          }
-        });
+        actions.append(copy, open);
 
         head.append(repoBox);
-        item.append(head, meta, actions, checkResult);
+        item.append(head, meta, actions);
         return item;
       }
 
@@ -761,7 +530,7 @@ window.__ModuleLoader__.load({
         results.replaceChildren();
         const total = Number(data.total_count) || 0;
         if (!Array.isArray(data.items) || data.items.length === 0) {
-          setStatus("没有匹配仓库。换个关键词试试，比如 topic:dsh-plugins -user:deepseek-ai，或直接输入 owner/repo。");
+          setStatus("没有匹配仓库。换个关键词试试，比如 topic:dsh-plugins -user:deepseek-ai 或 \"DeepSeek Harness\" plugin。");
           return;
         }
         const status = document.createElement("div");
@@ -774,19 +543,13 @@ window.__ModuleLoader__.load({
       }
 
       async function search() {
-        const seq = ++searchSeq;
         const values = new FormData(form);
         const query = String(values.get("query") || DEFAULT_QUERY).trim() || DEFAULT_QUERY;
         const sort = String(values.get("sort") || "stars");
+        const url = `https://api.github.com/search/repositories?q=${encodeURIComponent(query)}&sort=${encodeURIComponent(sort)}&order=desc&per_page=20`;
         searchButton.disabled = true;
         setStatus("正在搜索 GitHub...");
         try {
-          const directRepo = fetchDirectRepo(query);
-          if (directRepo) {
-            if (seq === searchSeq) render(directRepo);
-            return;
-          }
-          const url = `https://api.github.com/search/repositories?q=${encodeURIComponent(query)}&sort=${encodeURIComponent(sort)}&order=desc&per_page=20`;
           const response = await fetch(url, {
             headers: {
               Accept: "application/vnd.github+json"
@@ -797,11 +560,11 @@ window.__ModuleLoader__.load({
             const message = text(data?.message, `GitHub API ${response.status}`);
             throw new Error(message);
           }
-          if (seq === searchSeq) render(data);
+          render(data);
         } catch (error) {
-          if (seq === searchSeq) setStatus(`搜索失败：${error instanceof Error ? error.message : String(error)}`);
+          setStatus(`搜索失败：${error instanceof Error ? error.message : String(error)}`);
         } finally {
-          if (seq === searchSeq) searchButton.disabled = false;
+          searchButton.disabled = false;
         }
       }
 
