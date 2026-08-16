@@ -33,16 +33,13 @@ window.__ModuleLoader__.load({
                       "社区插件"
                 ],
                 "language": "TypeScript",
-                "stars": 301,
+                "stars": 266,
                 "lastChecked": "2026-08-16",
                 "verified": {
                       "packageName": "dshmarket",
                       "bundlePatch": "./cordis.patch.yml",
-                      "client": true,
-                      "branch": "main",
-                      "commit": "e672a69326fb7ac8e0ef60c7c3f7b2892030f3ae"
-                },
-                "forks": 26
+                      "client": true
+                }
           },
           {
                 "fullName": "bradeGithub/DSH-Plugins-Marketplace",
@@ -65,16 +62,13 @@ window.__ModuleLoader__.load({
                       "可视化"
                 ],
                 "language": "JavaScript",
-                "stars": 70,
+                "stars": 68,
                 "lastChecked": "2026-08-16",
                 "verified": {
                       "packageName": "dsh-plugin-marketplace",
                       "bundlePatch": "./cordis.patch.yml",
-                      "client": true,
-                      "branch": "main",
-                      "commit": "59773d7f17011d1f1fc54e2d8ab5e217678ebea0"
-                },
-                "forks": 6
+                      "client": true
+                }
           },
           {
                 "fullName": "2160039878-cyber/dsh-plugin-market",
@@ -103,11 +97,8 @@ window.__ModuleLoader__.load({
                 "verified": {
                       "packageName": "dsh-plugin-market",
                       "bundlePatch": "./cordis.patch.yml",
-                      "client": true,
-                      "branch": "main",
-                      "commit": "e897f674cf1ef3f97d0afcac047542984a8b64d8"
-                },
-                "forks": 0
+                      "client": true
+                }
           },
           {
                 "fullName": "KYZHXL/dsh-manager",
@@ -132,16 +123,13 @@ window.__ModuleLoader__.load({
                       "插件市场"
                 ],
                 "language": "TypeScript",
-                "stars": 5,
+                "stars": 4,
                 "lastChecked": "2026-08-16",
                 "verified": {
                       "packageName": "@snowsalt/dsh-manager",
                       "bundlePatch": "./cordis.patch.yml",
-                      "client": false,
-                      "branch": "main",
-                      "commit": "b3e85d73edac424d358f7794dd52d32d844e4f39"
-                },
-                "forks": 0
+                      "client": false
+                }
           },
           {
                 "fullName": "dancingmemory/dskin",
@@ -167,16 +155,13 @@ window.__ModuleLoader__.load({
                       "可爱"
                 ],
                 "language": "TypeScript",
-                "stars": 30,
+                "stars": 25,
                 "lastChecked": "2026-08-16",
                 "verified": {
                       "packageName": "dskin",
                       "bundlePatch": "./cordis.patch.yml",
-                      "client": true,
-                      "branch": "main",
-                      "commit": "b70cbf449fb0da298e593b02231bf5ff7e7c7e66"
-                },
-                "forks": 0
+                      "client": true
+                }
           },
           {
                 "fullName": "KinGao294/dsh-skin",
@@ -202,16 +187,13 @@ window.__ModuleLoader__.load({
                       "设置"
                 ],
                 "language": "JavaScript",
-                "stars": 14,
+                "stars": 11,
                 "lastChecked": "2026-08-16",
                 "verified": {
                       "packageName": "dsh-skin",
                       "bundlePatch": "./cordis.patch.yml",
-                      "client": true,
-                      "branch": "main",
-                      "commit": "65c79b09d4c5f23e72076ff6b6b6b26c883f935c"
-                },
-                "forks": 5
+                      "client": true
+                }
           },
           {
                 "fullName": "ManuSpurs/dsh-skin20260814",
@@ -242,11 +224,8 @@ window.__ModuleLoader__.load({
                 "verified": {
                       "packageName": "dsh-skin",
                       "bundlePatch": "./cordis.patch.yml",
-                      "client": true,
-                      "branch": "main",
-                      "commit": "88b1e9fdabd29b7a4ac7487e0e2f6506332f3c66"
-                },
-                "forks": 0
+                      "client": true
+                }
           },
           {
                 "fullName": "luoyan96/dsh-catnap-studio",
@@ -277,11 +256,8 @@ window.__ModuleLoader__.load({
                 "verified": {
                       "packageName": "dsh-client-ui-skin-catnap",
                       "bundlePatch": "./cordis.patch.yml",
-                      "client": true,
-                      "branch": "main",
-                      "commit": "21eae9949a6d5d7adf3f28926e67a13cdaf1ea3b"
-                },
-                "forks": 0
+                      "client": true
+                }
           },
           {
                 "fullName": "Lzh-12/dsh-skin-picker",
@@ -312,11 +288,8 @@ window.__ModuleLoader__.load({
                 "verified": {
                       "packageName": "dsh-skin-picker",
                       "bundlePatch": "./cordis.patch.yml",
-                      "client": true,
-                      "branch": "main",
-                      "commit": "be11a41028fbd78b13f55e3bf1b4e8d56b4f30eb"
-                },
-                "forks": 0
+                      "client": true
+                }
           },
           {
                 "fullName": "R3alloc/dsh-session-deeplink",
@@ -345,11 +318,8 @@ window.__ModuleLoader__.load({
                 "verified": {
                       "packageName": "dsh-session-deeplink",
                       "bundlePatch": "./cordis.patch.yml",
-                      "client": true,
-                      "branch": "main",
-                      "commit": "f6250b6c5ec6bcc8a6f715b59d034664f409281e"
-                },
-                "forks": 0
+                      "client": true
+                }
           },
           {
                 "fullName": "tensorlakeai/dsh-tensorlake-sandbox",
@@ -378,11 +348,8 @@ window.__ModuleLoader__.load({
                 "verified": {
                       "packageName": "@tensorlakeai/dsh-sandbox",
                       "bundlePatch": "./cordis.patch.yml",
-                      "client": false,
-                      "branch": "main",
-                      "commit": "5d90a33888641c5fcedb6a78878eb43ee5d0c38d"
-                },
-                "forks": 2
+                      "client": false
+                }
           },
           {
                 "fullName": "bugmaker2/dsh-plugin-template",
@@ -404,16 +371,13 @@ window.__ModuleLoader__.load({
                       "示例"
                 ],
                 "language": "TypeScript",
-                "stars": 20,
+                "stars": 19,
                 "lastChecked": "2026-08-16",
                 "verified": {
                       "packageName": "dsh-plugin-template",
                       "bundlePatch": "./cordis.patch.yml",
-                      "client": false,
-                      "branch": "main",
-                      "commit": "114f75999d8d477951cbd91ee4d1e0f5360d6627"
-                },
-                "forks": 2
+                      "client": false
+                }
           }
     ];
     const healthCache = new Map();
@@ -870,8 +834,7 @@ window.__ModuleLoader__.load({
     }
 
     function installCommand(repo) {
-      const ref = text(repo.dpmVerifiedCommit || "");
-      return `dsh plugin --profile web add github:${repo.full_name}${ref ? `#${ref}` : ""}`;
+      return `dsh plugin --profile web add github:${repo.full_name}`;
     }
 
     function categoryLabel(category) {
@@ -899,18 +862,16 @@ window.__ModuleLoader__.load({
     }
 
     function verifiedHealth(plugin) {
-      const shortCommit = plugin.verified.commit.slice(0, 12);
       const findings = [
         { label: `包名 ${plugin.verified.packageName}`, tone: "good" },
         { label: "有 dsh.bundle", tone: "good" },
         { label: `patch 存在 ${plugin.verified.bundlePatch}`, tone: "good" },
-        { label: plugin.verified.client ? "Web client 入口" : "Host 插件", tone: plugin.verified.client ? "good" : "warn" },
-        { label: `固定 ${shortCommit}`, tone: "good" }
+        { label: plugin.verified.client ? "Web client 入口" : "Host 插件", tone: plugin.verified.client ? "good" : "warn" }
       ];
       return {
         status: "good",
-        title: "已验证：安装命令固定到已检查 commit",
-        note: `内置目录最后校验：${REGISTRY_UPDATED_AT}。复制的安装命令会固定到 ${shortCommit}，避免安装到未检查的新代码。`,
+        title: "已验证：可作为 DSH 插件安装",
+        note: `内置目录最后校验：${REGISTRY_UPDATED_AT}。安装前仍建议打开 GitHub 看 README。`,
         findings
       };
     }
@@ -921,14 +882,13 @@ window.__ModuleLoader__.load({
         html_url: `https://github.com/${plugin.fullName}`,
         description: `${plugin.titleZh} · ${plugin.summaryZh}`,
         stargazers_count: plugin.stars,
-        forks_count: plugin.forks || 0,
+        forks_count: 0,
         updated_at: REGISTRY_UPDATED_AT,
         language: plugin.language,
-        default_branch: plugin.verified.branch,
+        default_branch: "main",
         dpmRegistry: true,
         dpmCategory: plugin.category,
         dpmTitle: plugin.titleZh,
-        dpmVerifiedCommit: plugin.verified.commit,
         dpmHealth: verifiedHealth(plugin)
       };
     }
@@ -1114,10 +1074,8 @@ window.__ModuleLoader__.load({
         return {
           status: "good",
           title: "看起来可以作为 DSH 插件安装",
-          note: hasClient
-            ? "检测到 bundle patch 和 Web client 入口。GitHub 搜索结果没有固定 commit；复制前建议打开 GitHub 再确认。"
-            : "检测到 bundle patch；它可能是 host-only 插件。GitHub 搜索结果没有固定 commit；复制前建议打开 GitHub 再确认。",
-          findings: [...findings, { label: "未固定 commit", tone: "warn" }]
+          note: hasClient ? "检测到 bundle patch 和 Web client 入口。" : "检测到 bundle patch；它可能是 host-only 插件，不一定有界面。",
+          findings
         };
       })();
 
@@ -1210,7 +1168,7 @@ window.__ModuleLoader__.load({
             <div class="dpm-status">正在加载内置目录...</div>
           </div>
           <div class="dpm-footer">
-            <span>内置目录复制固定 commit；GitHub 搜索结果默认只是线索。</span>
+            <span>安装命令只在体检通过后启用；GitHub 结果默认只是线索。</span>
             <a href="https://github.com/topics/dsh-plugins" target="_blank" rel="noreferrer">GitHub topic</a>
           </div>
         </div>
@@ -1298,8 +1256,7 @@ window.__ModuleLoader__.load({
           `star ${formatCount(repo.stargazers_count)}`,
           `fork ${formatCount(repo.forks_count)}`,
           `更新 ${formatDate(repo.updated_at)}`,
-          language,
-          repo.dpmVerifiedCommit ? `commit ${repo.dpmVerifiedCommit.slice(0, 12)}` : ""
+          language
         ].filter(Boolean);
         for (const value of fields) {
           const pill = document.createElement("span");

@@ -1,13 +1,5 @@
 # Changelog
 
-## v0.4.0
-
-- Pin every built-in verified registry entry to a checked Git commit.
-- Generate built-in install commands as `github:owner/repo#commit`.
-- Show verified commit metadata on plugin cards and in health-check results.
-- Mark live GitHub discovery results as installable but not commit-pinned.
-- Require `verified.branch` and 40-character `verified.commit` in registry validation.
-
 ## v0.3.1
 
 - Add category chips for the built-in verified directory.

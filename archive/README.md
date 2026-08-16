@@ -2,6 +2,8 @@
 
 Historical source snapshots live here so the repository keeps readable old versions, not only Git tags.
 
+- `v0.3.1/`: one-click category filters for the verified directory.
+- `v0.3.1.zip`: same source snapshot as a portable zip.
 - `v0.3.0/`: verified-first registry with 12 checked DSH plugins.
 - `v0.3.0.zip`: same source snapshot as a portable zip.
 - `v0.2.3/`: checked candidates fallback when no plugins pass.

@@ -6,7 +6,7 @@
 [![Plugin](https://img.shields.io/badge/DSH-plugin-blueviolet)](https://github.com/topics/dsh-plugins)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-`dsh-plugin-market` adds a floating verified plugin store to DeepSeek Harness Web. It opens with a local curated directory, supports Chinese and English search, can discover GitHub leads, checks whether a repository looks installable, opens GitHub, and copies pinned install commands for built-in verified entries.
+`dsh-plugin-market` adds a floating verified plugin store to DeepSeek Harness Web. It opens with a local curated directory, supports Chinese and English search, can discover GitHub leads, checks whether a repository looks installable, opens GitHub, and only enables install-command copying after verification.
 
 ![DSH Plugin Market screenshot](docs/screenshot.png)
 
@@ -21,7 +21,7 @@ This plugin gives you a safer store inside DSH:
 - Paste an exact `owner/repo` or GitHub repository URL when search indexing is slow.
 - Use GitHub search only as lead discovery.
 - See Chinese summaries, stars, language, update time, and descriptions at a glance.
-- Copy a `dsh plugin --profile web add github:owner/repo#commit` command for built-in verified entries.
+- Copy a `dsh plugin --profile web add ...` command only after the repository passes checks.
 - Run a quick installability check for `package.json`, `dsh.bundle.patch`, patch files, and Web client entry points.
 - Stay safe: no automatic remote install, no API key access, no hidden writes.
 
@@ -31,13 +31,12 @@ This plugin gives you a safer store inside DSH:
 - Chinese search expansion: words like `皮肤`, `市场`, `沙箱`, `会话`, `模板` map to relevant English tags.
 - The panel does not auto-search on open; this avoids immediate failures when `api.github.com` is blocked or rate-limited.
 - GitHub discovery is explicit: click `搜 GitHub` to search remote leads.
-- Built-in verified entries are pinned to a checked Git commit.
-- GitHub leads are checked; they can be shown as installable, but they are marked as not commit-pinned.
+- GitHub leads are checked; unverified candidates are shown but install command copying stays disabled.
 - Direct repository lookup without the GitHub Search API: `2160039878-cyber/dsh-plugin-market` or `https://github.com/2160039878-cyber/dsh-plugin-market`.
 - Sort by stars, update time, or forks.
 - Open matching repositories on GitHub.
 - Check whether a repository looks like a real DSH bundle.
-- Copy pinned install commands for built-in verified entries.
+- Copy install commands only after the repository passes the DSH plugin health check.
 - Works as a DSH Web client plugin.
 - No build step.
 - No dependencies.
@@ -45,13 +44,7 @@ This plugin gives you a safer store inside DSH:
 
 ## Registry
 
-The built-in directory lives in [`registry/plugins.json`](registry/plugins.json). Entries are intentionally conservative: a repository must expose a root `package.json`, declare `dsh.bundle.patch`, have the referenced patch file available, and record a 40-character verified commit. As of v0.4.0 it includes 12 checked repositories, with skin/theme plugins such as `dancingmemory/dskin`, `KinGao294/dsh-skin`, and `luoyan96/dsh-catnap-studio`.
-
-Built-in install commands are pinned:
-
-```powershell
-dsh plugin --profile web add github:owner/repo#verified_commit_sha
-```
+The built-in directory lives in [`registry/plugins.json`](registry/plugins.json). Entries are intentionally conservative: a repository must expose a root `package.json`, declare `dsh.bundle.patch`, and have the referenced patch file available. As of v0.3.0 it includes 12 checked repositories, with skin/theme plugins such as `dancingmemory/dskin`, `KinGao294/dsh-skin`, and `luoyan96/dsh-catnap-studio`.
 
 ## Design References
 
@@ -106,7 +99,7 @@ It does not:
 
 ## Status
 
-v0.4.0. Directory-first, includes verified skin/theme plugins, category filters, and pinned install commands.
+v0.3.1. Directory-first, includes verified skin/theme plugins, and adds one-click category filters.
 
 Planned only if needed:
 
@@ -120,8 +113,6 @@ Planned only if needed:
 
 Historical source snapshots are kept in [`archive/`](archive/) in addition to Git tags and GitHub releases.
 
-- [`archive/v0.3.1`](archive/v0.3.1): one-click category filters for the verified directory.
-- [`archive/v0.3.1.zip`](archive/v0.3.1.zip): the same snapshot as a zip package.
 - [`archive/v0.3.0`](archive/v0.3.0): verified-first registry with 12 checked DSH plugins.
 - [`archive/v0.3.0.zip`](archive/v0.3.0.zip): the same snapshot as a zip package.
 - [`archive/v0.2.3`](archive/v0.2.3): checked candidates fallback when no plugins pass.

@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-market",
-  "version": "0.4.0",
+  "version": "0.3.1",
   "description": "A verified-first plugin store and GitHub discovery helper for DeepSeek Harness.",
   "type": "module",
   "main": "lib/index.js",

@@ -16,6 +16,4 @@ for (const plugin of registry.plugins) {
   if (!Array.isArray(plugin.tags) || plugin.tags.length === 0) throw new Error(`${plugin.fullName} missing tags`);
   if (!Array.isArray(plugin.keywordsZh) || plugin.keywordsZh.length === 0) throw new Error(`${plugin.fullName} missing keywordsZh`);
   if (!plugin.verified?.packageName || !plugin.verified?.bundlePatch) throw new Error(`${plugin.fullName} missing verified package metadata`);
-  if (!/^[a-f0-9]{40}$/i.test(plugin.verified.commit || "")) throw new Error(`${plugin.fullName} missing verified commit`);
-  if (typeof plugin.verified.branch !== "string" || !plugin.verified.branch.trim()) throw new Error(`${plugin.fullName} missing verified branch`);
 }

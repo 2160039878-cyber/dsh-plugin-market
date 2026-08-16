@@ -23,16 +23,13 @@
         "社区插件"
       ],
       "language": "TypeScript",
-      "stars": 301,
+      "stars": 266,
       "lastChecked": "2026-08-16",
       "verified": {
         "packageName": "dshmarket",
         "bundlePatch": "./cordis.patch.yml",
-        "client": true,
-        "branch": "main",
-        "commit": "e672a69326fb7ac8e0ef60c7c3f7b2892030f3ae"
-      },
-      "forks": 26
+        "client": true
+      }
     },
     {
       "fullName": "bradeGithub/DSH-Plugins-Marketplace",
@@ -55,16 +52,13 @@
         "可视化"
       ],
       "language": "JavaScript",
-      "stars": 70,
+      "stars": 68,
       "lastChecked": "2026-08-16",
       "verified": {
         "packageName": "dsh-plugin-marketplace",
         "bundlePatch": "./cordis.patch.yml",
-        "client": true,
-        "branch": "main",
-        "commit": "59773d7f17011d1f1fc54e2d8ab5e217678ebea0"
-      },
-      "forks": 6
+        "client": true
+      }
     },
     {
       "fullName": "2160039878-cyber/dsh-plugin-market",
@@ -93,11 +87,8 @@
       "verified": {
         "packageName": "dsh-plugin-market",
         "bundlePatch": "./cordis.patch.yml",
-        "client": true,
-        "branch": "main",
-        "commit": "e897f674cf1ef3f97d0afcac047542984a8b64d8"
-      },
-      "forks": 0
+        "client": true
+      }
     },
     {
       "fullName": "KYZHXL/dsh-manager",
@@ -122,16 +113,13 @@
         "插件市场"
       ],
       "language": "TypeScript",
-      "stars": 5,
+      "stars": 4,
       "lastChecked": "2026-08-16",
       "verified": {
         "packageName": "@snowsalt/dsh-manager",
         "bundlePatch": "./cordis.patch.yml",
-        "client": false,
-        "branch": "main",
-        "commit": "b3e85d73edac424d358f7794dd52d32d844e4f39"
-      },
-      "forks": 0
+        "client": false
+      }
     },
     {
       "fullName": "dancingmemory/dskin",
@@ -157,16 +145,13 @@
         "可爱"
       ],
       "language": "TypeScript",
-      "stars": 30,
+      "stars": 25,
       "lastChecked": "2026-08-16",
       "verified": {
         "packageName": "dskin",
         "bundlePatch": "./cordis.patch.yml",
-        "client": true,
-        "branch": "main",
-        "commit": "b70cbf449fb0da298e593b02231bf5ff7e7c7e66"
-      },
-      "forks": 0
+        "client": true
+      }
     },
     {
       "fullName": "KinGao294/dsh-skin",
@@ -192,16 +177,13 @@
         "设置"
       ],
       "language": "JavaScript",
-      "stars": 14,
+      "stars": 11,
       "lastChecked": "2026-08-16",
       "verified": {
         "packageName": "dsh-skin",
         "bundlePatch": "./cordis.patch.yml",
-        "client": true,
-        "branch": "main",
-        "commit": "65c79b09d4c5f23e72076ff6b6b6b26c883f935c"
-      },
-      "forks": 5
+        "client": true
+      }
     },
     {
       "fullName": "ManuSpurs/dsh-skin20260814",
@@ -232,11 +214,8 @@
       "verified": {
         "packageName": "dsh-skin",
         "bundlePatch": "./cordis.patch.yml",
-        "client": true,
-        "branch": "main",
-        "commit": "88b1e9fdabd29b7a4ac7487e0e2f6506332f3c66"
-      },
-      "forks": 0
+        "client": true
+      }
     },
     {
       "fullName": "luoyan96/dsh-catnap-studio",
@@ -267,11 +246,8 @@
       "verified": {
         "packageName": "dsh-client-ui-skin-catnap",
         "bundlePatch": "./cordis.patch.yml",
-        "client": true,
-        "branch": "main",
-        "commit": "21eae9949a6d5d7adf3f28926e67a13cdaf1ea3b"
-      },
-      "forks": 0
+        "client": true
+      }
     },
     {
       "fullName": "Lzh-12/dsh-skin-picker",
@@ -302,11 +278,8 @@
       "verified": {
         "packageName": "dsh-skin-picker",
         "bundlePatch": "./cordis.patch.yml",
-        "client": true,
-        "branch": "main",
-        "commit": "be11a41028fbd78b13f55e3bf1b4e8d56b4f30eb"
-      },
-      "forks": 0
+        "client": true
+      }
     },
     {
       "fullName": "R3alloc/dsh-session-deeplink",
@@ -335,11 +308,8 @@
       "verified": {
         "packageName": "dsh-session-deeplink",
         "bundlePatch": "./cordis.patch.yml",
-        "client": true,
-        "branch": "main",
-        "commit": "f6250b6c5ec6bcc8a6f715b59d034664f409281e"
-      },
-      "forks": 0
+        "client": true
+      }
     },
     {
       "fullName": "tensorlakeai/dsh-tensorlake-sandbox",
@@ -368,11 +338,8 @@
       "verified": {
         "packageName": "@tensorlakeai/dsh-sandbox",
         "bundlePatch": "./cordis.patch.yml",
-        "client": false,
-        "branch": "main",
-        "commit": "5d90a33888641c5fcedb6a78878eb43ee5d0c38d"
-      },
-      "forks": 2
+        "client": false
+      }
     },
     {
       "fullName": "bugmaker2/dsh-plugin-template",
@@ -394,16 +361,13 @@
         "示例"
       ],
       "language": "TypeScript",
-      "stars": 20,
+      "stars": 19,
       "lastChecked": "2026-08-16",
       "verified": {
         "packageName": "dsh-plugin-template",
         "bundlePatch": "./cordis.patch.yml",
-        "client": false,
-        "branch": "main",
-        "commit": "114f75999d8d477951cbd91ee4d1e0f5360d6627"
-      },
-      "forks": 2
+        "client": false
+      }
     }
   ]
 }
