@@ -1,11 +1,5 @@
 # Changelog
 
-## v0.3.1
-
-- Add category chips for the built-in verified directory.
-- Add a dedicated `skin` category label so skin/theme plugins are not shown as raw tags.
-- Keep category filtering local and composable with Chinese keyword search.
-
 ## v0.3.0
 
 - Rework the product around a verified built-in plugin directory.

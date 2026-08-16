@@ -46,14 +46,6 @@ This plugin gives you a safer store inside DSH:
 
 The built-in directory lives in [`registry/plugins.json`](registry/plugins.json). Entries are intentionally conservative: a repository must expose a root `package.json`, declare `dsh.bundle.patch`, and have the referenced patch file available. As of v0.3.0 it includes 12 checked repositories, with skin/theme plugins such as `dancingmemory/dskin`, `KinGao294/dsh-skin`, and `luoyan96/dsh-catnap-studio`.
 
-## Design References
-
-This project follows the public DSH plugin ecosystem's practical patterns without copying third-party code:
-
-- [`dsh-plugin-installer`](https://github.com/Toukaiteio/dsh-plugin-installer) separates discovery from install action;
-- [`dsh-market`](https://github.com/dsh-market/dsh-market) makes browsing faster with category-first navigation;
-- [`dsh-skin`](https://github.com/KinGao294/dsh-skin) shows why theme plugins need a first-class `skin` category instead of being buried in free-text search.
-
 Check the registry locally:
 
 ```powershell
@@ -99,7 +91,7 @@ It does not:
 
 ## Status
 
-v0.3.1. Directory-first, includes verified skin/theme plugins, and adds one-click category filters.
+v0.3.0. Directory-first, includes verified skin/theme plugins, and usable without GitHub search.
 
 Planned only if needed:
 
@@ -113,8 +105,6 @@ Planned only if needed:
 
 Historical source snapshots are kept in [`archive/`](archive/) in addition to Git tags and GitHub releases.
 
-- [`archive/v0.3.0`](archive/v0.3.0): verified-first registry with 12 checked DSH plugins.
-- [`archive/v0.3.0.zip`](archive/v0.3.0.zip): the same snapshot as a zip package.
 - [`archive/v0.2.3`](archive/v0.2.3): checked candidates fallback when no plugins pass.
 - [`archive/v0.2.3.zip`](archive/v0.2.3.zip): the same snapshot as a zip package.
 - [`archive/v0.2.2`](archive/v0.2.2): no automatic GitHub search on panel open.

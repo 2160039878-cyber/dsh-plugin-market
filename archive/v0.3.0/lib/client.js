@@ -501,37 +501,30 @@ window.__ModuleLoader__.load({
   grid-template-columns: 1fr auto auto auto;
   gap: 10px;
   padding: 14px 18px;
-}
-
-.dpm-categorybar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 0 18px 14px;
   border-bottom: 1px solid var(--dsw-alias-border-l2, rgba(255,255,255,.12));
 }
 
-.dpm-category {
+.dpm-filter {
   display: inline-flex;
   align-items: center;
-  min-height: 28px;
+  gap: 7px;
+  height: 36px;
   border: 1px solid var(--dsw-alias-border-l2, rgba(255,255,255,.16));
-  border-radius: 999px;
-  padding: 0 11px;
-  background: transparent;
+  border-radius: 8px;
+  padding: 0 10px;
+  background: var(--dsw-alias-bg-layer-3, #26282e);
   color: var(--dsw-alias-label-secondary, #d7d9e0);
-  cursor: pointer;
-  font: inherit;
   font-size: 12px;
   line-height: 1;
   white-space: nowrap;
+  cursor: pointer;
 }
 
-.dpm-category:hover,
-.dpm-category[data-active="true"] {
-  border-color: var(--dsw-alias-brand-primary, #4f7cff);
-  background: color-mix(in srgb, var(--dsw-alias-brand-primary, #4f7cff) 14%, transparent);
-  color: var(--dsw-alias-label-primary, #f7f7fb);
+.dpm-filter input {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  accent-color: var(--dsw-alias-brand-primary, #4f7cff);
 }
 
 .dpm-input,
@@ -843,22 +836,8 @@ window.__ModuleLoader__.load({
         developer: "开发",
         workflow: "工作流",
         runtime: "运行时",
-        manager: "管理",
-        skin: "皮肤"
+        manager: "管理"
       }[category] || category || "插件";
-    }
-
-    function categoryOptions() {
-      const counts = REGISTRY.reduce((map, plugin) => {
-        map.set(plugin.category, (map.get(plugin.category) || 0) + 1);
-        return map;
-      }, new Map());
-      return [
-        { value: "", label: "全部", count: REGISTRY.length },
-        ...["market", "manager", "skin", "workflow", "runtime", "developer"]
-          .filter((value) => counts.has(value))
-          .map((value) => ({ value, label: categoryLabel(value), count: counts.get(value) }))
-      ];
     }
 
     function verifiedHealth(plugin) {
@@ -931,21 +910,15 @@ window.__ModuleLoader__.load({
       return expanded.split(/\s+/).filter((term) => term.length >= 2).some((term) => haystack.includes(term));
     }
 
-    function registryData(query = "", category = "") {
-      const items = REGISTRY
-        .filter((plugin) => (!category || plugin.category === category) && registryMatches(plugin, query))
-        .map(registryRepo);
-      const categoryText = category ? `${categoryLabel(category)}分类，` : "";
-      const suffixParts = [];
-      if (category) suffixParts.push(`${categoryLabel(category)} ${items.length} 个`);
-      if (query) suffixParts.push(`匹配 ${items.length} 个`);
-      const suffix = suffixParts.length ? `，${suffixParts.join("，")}` : "";
+    function registryData(query = "") {
+      const items = REGISTRY.filter((plugin) => registryMatches(plugin, query)).map(registryRepo);
+      const suffix = query ? `，匹配 ${items.length} 个` : "";
       return {
         total_count: REGISTRY.length,
         items,
         dpmStatus: query && items.length === 0
-          ? `内置目录${categoryText}没有匹配“${query}”的已验证插件。可以点“搜 GitHub”发现线索，未通过体检的结果不会启用安装命令。`
-          : `内置目录：${REGISTRY.length} 个已验证 DSH 插件，${categoryText}最后校验 ${REGISTRY_UPDATED_AT}${suffix}。`
+          ? `内置目录没有匹配“${query}”的已验证插件。可以点“搜 GitHub”发现线索，未通过体检的结果不会启用安装命令。`
+          : `内置目录：${REGISTRY.length} 个已验证 DSH 插件，最后校验 ${REGISTRY_UPDATED_AT}${suffix}。`
       };
     }
 
@@ -1163,7 +1136,6 @@ window.__ModuleLoader__.load({
             <button class="dpm-button" type="submit">搜目录</button>
             <button class="dpm-button dpm-button-secondary" type="button" data-dpm-github>搜 GitHub</button>
           </form>
-          <div class="dpm-categorybar" data-dpm-categories aria-label="插件分类"></div>
           <div class="dpm-results" data-dpm-results>
             <div class="dpm-status">正在加载内置目录...</div>
           </div>
@@ -1178,11 +1150,9 @@ window.__ModuleLoader__.load({
       const launcher = root.querySelector(".dpm-launcher");
       const panel = root.querySelector(".dpm-panel");
       const form = root.querySelector(".dpm-search");
-      const categoryBar = root.querySelector("[data-dpm-categories]");
       const results = root.querySelector("[data-dpm-results]");
       const toast = root.querySelector("[data-dpm-toast]");
       const searchButton = root.querySelector(".dpm-button");
-      let activeCategory = "";
       let searchSeq = 0;
       let toastTimer = 0;
 
@@ -1206,24 +1176,6 @@ window.__ModuleLoader__.load({
         node.className = "dpm-status";
         node.textContent = message;
         results.appendChild(node);
-      }
-
-      function renderCategories() {
-        categoryBar.replaceChildren();
-        for (const option of categoryOptions()) {
-          const button = document.createElement("button");
-          button.type = "button";
-          button.className = "dpm-category";
-          button.dataset.category = option.value;
-          button.dataset.active = String(option.value === activeCategory);
-          button.textContent = `${option.label} ${option.count}`;
-          button.addEventListener("click", () => {
-            activeCategory = option.value;
-            renderCategories();
-            searchDirectory();
-          });
-          categoryBar.appendChild(button);
-        }
       }
 
       function buildCard(repo) {
@@ -1374,7 +1326,7 @@ window.__ModuleLoader__.load({
           render(directRepo);
           return;
         }
-        render(registryData(query, activeCategory));
+        render(registryData(query));
       }
 
       async function discoverGithub() {
@@ -1447,8 +1399,7 @@ window.__ModuleLoader__.load({
       });
       document.addEventListener("keydown", onKeydown);
       document.body.appendChild(root);
-      renderCategories();
-      render(registryData("", activeCategory));
+      render(registryData());
 
       return () => {
         window.clearTimeout(toastTimer);
